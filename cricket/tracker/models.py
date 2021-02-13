@@ -5,10 +5,10 @@ from phone_field import PhoneField
 # Create your models here.
 
 class Todo(models.Model):
-    tid = models.PositiveIntegerField(unique=True)
     todoTime = models.DateTimeField()
     task = models.CharField(max_length=255)
-    lastDone = models.DateTimeField()
+    lastDone = models.DateTimeField(blank=True)
+    recurring = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         """
@@ -24,7 +24,6 @@ class Todo(models.Model):
         ordering = ['todoTime']
 
 class Supplier(models.Model):
-    supplier_id = models.PositiveIntegerField(unique=True)
     name = models.CharField(max_length=35)
     phone = PhoneField(blank=True, help_text='Company phone number')
     afterHoursPhone = PhoneField(blank=True, help_text='On call number')
@@ -42,7 +41,7 @@ class Supplier(models.Model):
         # order suppliers by name
         ordering = ['name']
 
-class Supplies(models.Model):
+class Supply(models.Model):
     CATEGORIES = (
         ('RESP', 'Respiratory'),
         ('FEED', 'Feeding'),
@@ -50,15 +49,14 @@ class Supplies(models.Model):
         ('WOUND', 'Wound Care'),
         ('OTHER', 'Other'),
     )
-    supply_id = models.PositiveIntegerField(unique=True)
     description = models.CharField(max_length=40)
-    orderNumber = models.CharField(max_length=30)
+    orderNumber = models.CharField(max_length=30, blank=True)
     category = models.CharField(max_length=30, choices=CATEGORIES)
-    amount = models.PositiveIntegerField()
+    amount = models.PositiveIntegerField(blank=True)
     supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    lastDelivery = models.DateField()
-    nextDelivery = models.DateField()
-    deliveryFrequency = models.CharField(max_length=35)
+    lastDelivery = models.DateField(blank=True)
+    nextDelivery = models.DateField(blank=True)
+    deliveryFrequency = models.CharField(max_length=35, blank=True)
 
     def get_absolute_url(self):
         """
@@ -73,11 +71,10 @@ class Supplies(models.Model):
         # order supplies by description
         ordering = ['description']
 
-class Appointments(models.Model):
-    appt_id = models.PositiveIntegerField(unique=True)
+class Appointment(models.Model):
     dateTime = models.DateTimeField()
     seeing = models.CharField(max_length=35)
-    address = models.CharField(max_length=35)
+    address = models.CharField(max_length=35, blank=True)
     phone = PhoneField(blank=True)
 
     def get_absolute_url(self):
