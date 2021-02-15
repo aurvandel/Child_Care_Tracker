@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from tracker import views
+#from todolist import views
+
+from django.conf.urls import url
+#from todolist.views import index
 
 urlpatterns = [
-    path('tracker/', include('tracker.urls')),
+    path('', views.index, name='index'),
+    #path('tracker/', include('tracker.urls')),
     path('admin/', admin.site.urls),
+    #url(r'^$', index, name="TodoList"),
 ]

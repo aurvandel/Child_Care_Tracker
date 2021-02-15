@@ -7,8 +7,9 @@ from phone_field import PhoneField
 class Todo(models.Model):
     todoTime = models.DateTimeField()
     task = models.CharField(max_length=255)
-    lastDone = models.DateTimeField(blank=True)
-    recurring = models.BooleanField(default=False)
+    lastDone = models.DateTimeField(blank=True, null=True)
+    recurring = models.BooleanField(default=False, blank=True)
+    completed = models.BooleanField(default=False, blank=True)
 
     def get_absolute_url(self):
         """
