@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from phone_field import PhoneField
+from django.utils import timezone
+import datetime
 
 # Create your models here.
 
@@ -15,10 +17,20 @@ class Todo(models.Model):
         """
         Returns the url to access a particular instance of a task.
         """
-        return reverse('task-detail', args=[str(self.id)])  # task-detail comes form URlS.py
+        return reverse('todo-detail', args=[str(self.id)])  # task-detail comes form URlS.py
 
     def __str__(self):
         return self.task
+
+    def getDate(self):
+        return self.todoTime.strftime('%x')
+
+    def getTime(self):
+        return self.todoTime.strftime('%X')
+
+    @property
+    def pastDue(self):
+        return timezone.now() > self.todoTime
 
     class Meta:
         # order tasks by time

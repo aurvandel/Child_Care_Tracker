@@ -1,9 +1,46 @@
 {% extends 'tracker/base.html' %}
+{% block headScripts %}
+
+{#    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>#}
+{#<!-- Latest compiled and minified JavaScript -->#}
+{#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>#}
+
+
+{% endblock %}
 
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <h1 class="title">TODO Page</h1>
-        </div>
-    </section>
+        <h1>TODO</h1>
+        {% if todos %}
+            <div class="list-group">
+                {% for todo in todos %}
+                    {% if todo.pastDue %}
+                        <a href="{% url 'task_complete' todo.pk %}"
+                           data-popup-url="{% url 'task_complete' todo.pk %}"
+                           class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
+                            {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
+                        </a>
+                    {% else %}
+                        <a href="{{ todo.get_absolute_url }}" class="h2 list-group-item list-group-item-action list-group-item-dark">{{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>All done for today</p>
+        {% endif %}
+
+{% include "tracker/task-complete-modal.html" %}
+
+
 {% endblock %}
+
+
+
+{#        <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>#}
+{#        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list group item</a>#}

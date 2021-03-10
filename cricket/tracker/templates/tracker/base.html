@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -7,70 +8,74 @@
         <meta name="author" content="Parker Watkins">
         <title>Child Care Tracker</title>
 
-{#        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">#}
-
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        {% load static %}
+
+        <!-- my CSS -->
         <link rel="stylesheet" href="{% static 'navbar.css' %}">
 
-        <style>
+        <!-- jquery only worked when I put it up here -->
+        <script  src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
-
-        </style>
-{#        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>#}
+        {% block headScripts %}
+            <!-- Use for extra scripts otherwise ignore -->
+        {% endblock %}
 
 
     </head>
-<body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="navbar">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbar">
-            <div class="col-md-6">
+    <body class="p-3 mb-2 bg-dark text-white">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="navbar">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbar">
+                    <div class="col-md-6">
 
-                <!-- Navigation tabs -->
-                <ul class="nav nav-tabs me-auto mb-2 mb-sm-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Supplies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Calendar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
-                    </li>
-                </ul>
-            </div>
+                        <!-- Navigation tabs -->
+                        <ul class="nav nav-tabs me-auto mb-2 mb-sm-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Schedule</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Supplies</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/">Admin</a>
+                            </li>
+                        </ul>
+                    </div>
 
-            <!-- Clock -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div id="clock" class="col-md-6"></div>
+                    <!-- Clock -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div id="clock" class="col-md-7"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div id="date" class="col-md-7"> </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div id="date" class="col-md-6"> </div>
-                </div>
             </div>
-        </div>
-    </div>
-</nav>
+        </nav>
 
-{% block content %}
+        {% block content %}
 
-{% endblock content %}
+        {% endblock content %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<script src="{% static 'clock.js' %}"></script>
-<script>
-    currentTime();
-</script>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
+        <!-- django-bootstrap-modal-forms library -->
+        <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
-</body>
+        <!-- js code for my custom clock -->
+        <script src="{% static 'clock.js' %}"></script>
+        <script>
+            currentTime();
+        </script>
+
+    </body>
 </html>

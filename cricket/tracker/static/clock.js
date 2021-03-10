@@ -1,5 +1,5 @@
 (function() {
-    var days = ['Sun','Mon','Tues','Wedns','Thur','Fri','Sat'];
+    var days = ['Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
 
     var months = ['Jan','Feb','Mar','Arp','May','June','July','Aug','Sept','Oct','Nov','Dec'];
 
