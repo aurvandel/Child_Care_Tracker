@@ -32,6 +32,10 @@ class Todo(models.Model):
     def pastDue(self):
         return timezone.now() > self.todoTime
 
+    @property
+    def updateTodo(self):
+        self.todoTime += datetime.timedelta(days=1)
+
     class Meta:
         # order tasks by time
         ordering = ['todoTime']

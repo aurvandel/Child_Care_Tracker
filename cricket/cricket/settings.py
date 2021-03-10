@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phone_field',
     "tracker",
-    "bootstrap5",
-    "bootstrap_modal_forms",
+    #"bootstrap5",
+    #"bootstrap_modal_forms",
 ]
 
 MIDDLEWARE = [
