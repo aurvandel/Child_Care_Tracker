@@ -4,23 +4,20 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#completed").modal('show');
+        $("#deleteTodo").modal('show');
     });
 </script>
-
-<script src="https://use.fontawesome.com/fab2f8d95c.js"></script>
 
 {% endblock %}
 
 {% block modal %}
     <!-- Modal -->
 
-    <div class="modal fade" id="completed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteTodo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <span class="text-dark"> {{ obj.task }} completed? 
-
+                    <span class="text-dark"> Are You sure you want to delete {{ object.task }}? 
                     </span>
                     <form action="" method="post"> {% csrf_token %}
                         <a href="{% url 'index' %}"button type="button" class="btn btn-secondary">Cancel</a>

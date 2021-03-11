@@ -17,7 +17,7 @@ class Todo(models.Model):
         """
         Returns the url to access a particular instance of a task.
         """
-        return reverse('todo-detail', args=[str(self.id)])  # task-detail comes form URlS.py
+        return reverse('todo-detail', kwargs={'pk':self.pk})  # task-detail comes form URlS.py
 
     def __str__(self):
         return self.task
@@ -31,6 +31,10 @@ class Todo(models.Model):
     @property
     def pastDue(self):
         return timezone.now() > self.todoTime
+
+    @property
+    def getCompleted(self):
+        return self.completed
 
     @property
     def updateTodo(self):
@@ -49,7 +53,7 @@ class Supplier(models.Model):
         """
         Returns the url to access a particular instance of a supplier.
         """
-        return reverse('supplier-detail', args=[str(self.id)])  # supplier-detail comes form URlS.py
+        return reverse('supplier-detail', kwargs={'pk':self.pk})  # supplier-detail comes form URlS.py
 
     def __str__(self):
         return self.name
@@ -71,16 +75,15 @@ class Supply(models.Model):
     category = models.CharField(max_length=30, choices=CATEGORIES)
     amount = models.PositiveIntegerField(blank=True)
     supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    lastDelivery = models.DateField(blank=True)
+    lastDelivery = models.DateField(blank=False)
     nextDelivery = models.DateField(blank=True)
-    #TODO: Change update frequency to int
-    deliveryFrequency = models.CharField(max_length=35, blank=True)
+    deliveryFrequency = models.PositiveIntegerField(blank=False)
 
     def get_absolute_url(self):
         """
         Returns the url to access a particular instance of a supply.
         """
-        return reverse('supply-detail', args=[str(self.id)])  # supply-detail comes form URlS.py
+        return reverse('supply-detail', kwargs={'pk':self.pk})  # supply-detail comes form URlS.py
 
     def __str__(self):
         return self.description
@@ -108,7 +111,7 @@ class Appointment(models.Model):
         """
         Returns the url to access a particular instance of a appt.
         """
-        return reverse('appt-detail', args=[str(self.id)])  # appt-detail comes form URlS.py
+        return reverse('appt-detail', kwargs={'pk':self.pk})  # appt-detail comes form URlS.py
 
     def __str__(self):
         return '%s %s' % (self.dateTime, self.seeing)

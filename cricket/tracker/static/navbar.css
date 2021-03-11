@@ -42,6 +42,15 @@ form {
   margin-top: 20px;
 }
 
-ul {
+.nav {
   width: 400px;
+}
+
+.bigButtons {
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.col-10 {
+  width: 800px;
 }

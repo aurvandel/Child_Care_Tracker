@@ -1,7 +1,10 @@
 from django import forms
-from .models import Todo
+from django.urls import reverse_lazy
+from .models import *
 
-class TodoModelForm(forms.ModelForm):
+class TodoCreateForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ['todoTime', 'task', 'lastDone', 'recurring', 'completed']
+        fields = '__all__'
+        success_url = reverse_lazy('index')
+

@@ -7,38 +7,55 @@
 {% endblock %}
 
 {% block addItem %}
-<a href="{% url 'index' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+<a href="{% url 'todo-add' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
     <i class="far fa-calendar-plus" aria-hidden="true"></i>
 </a>
 {% endblock addItem %}
 
 {% block content %}
-        <h1>TODO</h1>
-        {% if todos %}
-            <div class="list-group">
-                {% for todo in todos %}
+    <h1>TODO</h1>
+    {% if todos %}
+    <table>
+        <tbody><thead></thead>
+            {% for todo in todos %}
+                {% if not todo.getCompleted %}
+                <tr>
                     {% if todo.pastDue %}
-                        <a href="{% url 'task_complete' todo.pk %}"
-                           data-popup-url="{% url 'task_complete' todo.pk %}"
-                           class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
-                            {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
-                        </a> 
+                        <td class="rounded col-10">
+                            <a href="{% url 'task_complete' todo.pk %}"
+                                data-popup-url="{% url 'task_complete' todo.pk %}"
+                                class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
+                                {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
+                            </a> 
+                        </td>
+                        <td>
+                            <a href="{% url 'todo-update' todo.pk %}" class="bigButtons btn btn-primary btn-lg" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{% url 'todo-delete' todo.pk %}" class="bigButtons btn btn-danger btn-lg" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                        </td> 
                     {% else %}
-                        <a href="{% url 'task_complete' todo.pk %}"
-                        data-popup-url="{% url 'task_complete' todo.pk %}"
-                        class="h2 list-group-item list-group-item-action list-group-item-dark">
-                        {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
-                        
-                    </a>
+                        <td class="rounded col-10">
+                            <a href="{% url 'task_complete' todo.pk %}"
+                                data-popup-url="{% url 'task_complete' todo.pk %}"
+                                class="h2 list-group-item list-group-item-action list-group-item-dark">
+                                {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'todo-delete' todo.pk %}" class="bigButtons btn btn-primary btn-lg " role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{% url 'todo-update' todo.pk %}" class="bigButtons btn btn-danger btn-lg " role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                        </td>
                     {% endif %}
-                {% endfor %}
-            </div>
-            {% else %}
-            <p>All done for today</p>
-        {% endif %}
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>All done for today</p>
+    {% endif %}
 
-        {% block modal %}
+    {% block modal %}
 
-        {% endblock modal %}
+    {% endblock modal %}
 
 {% endblock content %}

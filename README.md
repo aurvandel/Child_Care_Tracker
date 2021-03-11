@@ -25,8 +25,8 @@ django-bootstrap-modal-forms
 - [x] Brush up on Django and JavaScript
 - [x] Code home page as a navigation menu
 - [x] Create the daily schedule to track breathing treatments, medications and feeds page
-- [] Create input form to add to the daily schedule
-- [] Validate that home page navigates to daily schedule and input form and that data can be added and deleted
+- [x] Create input form to add to the daily schedule
+- [x] Validate that home page navigates to daily schedule and input form and that data can be added and deleted
 
 #### Mon Mar 1, 2021
 - [x] Create the meds and supplies tracker page

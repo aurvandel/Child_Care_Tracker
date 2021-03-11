@@ -4,25 +4,23 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#completed").modal('show');
+        $("#add").modal('show');
     });
 </script>
 
-<script src="https://use.fontawesome.com/fab2f8d95c.js"></script>
 
 {% endblock %}
 
 {% block modal %}
     <!-- Modal -->
 
-    <div class="modal fade" id="completed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <span class="text-dark"> {{ obj.task }} completed? 
-
-                    </span>
+                    <span class="text-dark"> Create New Task 
                     <form action="" method="post"> {% csrf_token %}
+                        {{ form.as_p }}
                         <a href="{% url 'index' %}"button type="button" class="btn btn-secondary">Cancel</a>
                         <input type="submit" value="Confirm" class="btn btn-primary"/>
                     </form>

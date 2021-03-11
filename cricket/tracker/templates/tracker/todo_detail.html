@@ -1,16 +1,29 @@
- 1 <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- 2   <div class="modal-dialog">
- 3     <div class="modal-content">
- 4       <div class="modal-header">
- 5         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
- 6         <h4 class="modal-title">Modal title</h4>
- 7       </div>
- 8       <div id="form-modal-body" class="modal-body">
- 9         ...
-10       </div>
-11       <div class="modal-footer">
-12         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-13       </div>
-14     </div>
-15   </div>
-16 </div>
+{% extends 'tracker/index.html' %}
+
+{% block headScripts %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#todoDetail").modal('show');
+    });
+</script>
+
+<script src="https://use.fontawesome.com/fab2f8d95c.js"></script>
+
+{% endblock %}
+
+{% block modal %}
+    <!-- Modal -->
+
+    <div class="modal fade" id="todoDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-dark"> {{ object.task }} created successfully </div>
+                        <a href="{% url 'index' %}"button type="button" class="btn btn-primary">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
