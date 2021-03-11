@@ -1,0 +1,48 @@
+{% extends 'tracker/base.html' %}
+
+{% block headScripts %}
+
+<script src="https://kit.fontawesome.com/3543ae7a77.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block addItem %}
+<a href="{% url 'index' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+    <i class="far fa-plus-square" aria-hidden="true"></i>
+</a>
+<a href="{% url 'index' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+    <i class="fas fa-user-plus" aria-hidden="true"></i>
+</a>
+
+{% endblock addItem %}
+
+{% block content %}
+        <h1>SUPPLIES</h1>
+        {% if supplies %}
+            <div class="list-group">
+                {% for supply in supplies %}
+                    {% if supply.pastDue %}
+                        <a href="{% url 'supply_complete' supply.pk %}"
+                           data-popup-url="{% url 'supply_complete' supply.pk %}"
+                           class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
+                            {{ supply.lastDelivery }} {{ supply.description }} {{ supply.orderNumber }}
+                        </a> 
+                    {% else %}
+                        <a href="{% url 'supply_complete' supply.pk %}"
+                            data-popup-url="{% url 'supply_complete' supply.pk %}"
+                            class="h2 list-group-item list-group-item-action list-group-item-dark">
+                            {{ supply.lastDelivery }} {{ supply.description }} {{ supply.orderNumber }}
+                        
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>Please enter some supplies</p>
+        {% endif %}
+
+        {% block modal %}
+
+        {% endblock modal %}
+
+{% endblock content %}

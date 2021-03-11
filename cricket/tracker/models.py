@@ -73,6 +73,7 @@ class Supply(models.Model):
     supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     lastDelivery = models.DateField(blank=True)
     nextDelivery = models.DateField(blank=True)
+    #TODO: Change update frequency to int
     deliveryFrequency = models.CharField(max_length=35, blank=True)
 
     def get_absolute_url(self):
@@ -84,6 +85,15 @@ class Supply(models.Model):
     def __str__(self):
         return self.description
 
+    @property
+    def pastDue(self):
+        return timezone.now() > (self.lastDelivery + datetime.timedelta(days=self.deliveryFrequency))
+
+    @property
+    def updateSupplyDate(self):
+        self.lastDelivery = timezone.now()
+        self.nextDelivery = timezone.now() + datetime.timedelta(days=self.deliveryFrequency)
+    
     class Meta:
         # order supplies by description
         ordering = ['description']

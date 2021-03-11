@@ -1,4 +1,4 @@
-{% extends 'tracker/index.html' %}
+{% extends 'tracker/supply.html' %}
 
 {% block headScripts %}
 
@@ -19,14 +19,14 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <span class="text-dark"> {{ obj.task }} completed? 
+                    <span class="text-dark"> {{ obj.description }} reordered? 
                         <span class="deleteModalButtons">
-                            <a href="{% url 'index' %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
-                            <a href="{% url 'index' %}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{% url 'supplies' %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                            <a href="{% url 'supplies' %}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </span>
                     </span>
                     <form action="" method="post"> {% csrf_token %}
-                        <a href="{% url 'index' %}"button type="button" class="btn btn-secondary">Cancel</a>
+                        <a href="{% url 'supplies' %}"button type="button" class="btn btn-secondary">Cancel</a>
                         <input type="submit" value="Confirm" class="btn btn-primary"/>
                     </form>
                 </div>

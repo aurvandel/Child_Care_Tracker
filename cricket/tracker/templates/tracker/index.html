@@ -1,5 +1,17 @@
 {% extends 'tracker/base.html' %}
 
+{% block headScripts %}
+
+<script src="https://kit.fontawesome.com/3543ae7a77.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block addItem %}
+<a href="{% url 'index' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+    <i class="far fa-calendar-plus" aria-hidden="true"></i>
+</a>
+{% endblock addItem %}
+
 {% block content %}
         <h1>TODO</h1>
         {% if todos %}
@@ -10,12 +22,13 @@
                            data-popup-url="{% url 'task_complete' todo.pk %}"
                            class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
                             {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
-                        </a>
+                        </a> 
                     {% else %}
                         <a href="{% url 'task_complete' todo.pk %}"
                         data-popup-url="{% url 'task_complete' todo.pk %}"
                         class="h2 list-group-item list-group-item-action list-group-item-dark">
                         {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
+                        
                     </a>
                     {% endif %}
                 {% endfor %}
@@ -29,5 +42,3 @@
         {% endblock modal %}
 
 {% endblock content %}
-
-
