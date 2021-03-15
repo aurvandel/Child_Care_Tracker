@@ -51,6 +51,10 @@ form {
   z-index: 1;
 }
 
+h1.title {
+  text-align: center;
+}
+
 /* Links inside the navbar */
 .navbar a {
   float: left;

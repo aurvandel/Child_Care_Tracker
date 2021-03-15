@@ -38,6 +38,7 @@ class Todo(models.Model):
 
     @property
     def updateTodo(self):
+        self.lastDone = self.todoTime
         self.todoTime += datetime.timedelta(days=1)
 
     class Meta:
@@ -74,8 +75,8 @@ class Supply(models.Model):
     orderNumber = models.CharField(max_length=30, blank=True)
     category = models.CharField(max_length=30, choices=CATEGORIES)
     amount = models.PositiveIntegerField(blank=True)
-    supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    lastDelivery = models.DateField(blank=False)
+    supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE, blank=True)
+    lastDelivery = models.DateField(blank=True)
     nextDelivery = models.DateField(blank=True)
     deliveryFrequency = models.PositiveIntegerField(blank=False)
 
@@ -90,13 +91,15 @@ class Supply(models.Model):
 
     @property
     def pastDue(self):
-        return timezone.now() > (self.lastDelivery + datetime.timedelta(days=self.deliveryFrequency))
+        return datetime.date.today() > (self.lastDelivery + datetime.timedelta(days=self.deliveryFrequency))
 
     @property
     def updateSupplyDate(self):
-        self.lastDelivery = timezone.now()
-        self.nextDelivery = timezone.now() + datetime.timedelta(days=self.deliveryFrequency)
-    
+        self.lastDelivery = datetime.date.today()
+        self.nextDelivery = datetime.date.today() + datetime.timedelta(days=self.deliveryFrequency)
+        print(self.nextDelivery)
+        print(self.lastDelivery)
+
     class Meta:
         # order supplies by description
         ordering = ['description']
@@ -119,3 +122,4 @@ class Appointment(models.Model):
     class Meta:
         # order appt by dateTime
         ordering = ['dateTime']
+

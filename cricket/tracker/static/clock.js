@@ -13,6 +13,7 @@
 
 function currentTime() {
   var date = new Date(); /* creating object of Date class */
+  var dayOfMonth = date.getDate();
   var hour = date.getHours();
   var min = date.getMinutes();
   var sec = date.getSeconds();
@@ -26,7 +27,7 @@ function currentTime() {
   min = updateTime(min);
   sec = updateTime(sec);
   document.getElementById("clock").innerHTML = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
-  document.getElementById("date").innerHTML = day + ", " + month + " " + " " + year;
+  document.getElementById("date").innerHTML = day + ", " + month + " " + dayOfMonth + " " + year;
   var t = setTimeout(currentTime, 1000); /* setting timer */
 }
 

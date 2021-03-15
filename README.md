@@ -9,8 +9,8 @@ Run dev server with runCCT
 django
 python-dotenv
 django-phone-field
-django-bootstrap-v5
-django-bootstrap-modal-forms
+django-background-tasks
+
 
 ### Project Milestones
 

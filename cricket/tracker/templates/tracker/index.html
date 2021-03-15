@@ -1,9 +1,11 @@
 {% extends 'tracker/base.html' %}
+{% load static %}
 
 <!-- TODO: Change styling on some of these modals -->
 {% block headScripts %}
 
 <script src="https://kit.fontawesome.com/3543ae7a77.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'navbar.css' %}">
 
 {% endblock %}
 
@@ -14,7 +16,7 @@
 {% endblock addItem %}
 
 {% block content %}
-    <h1>TODO</h1>
+    <!-- <h1 class="title">TODO</h1> -->
     {% if todos %}
     <table>
         <tbody><thead></thead>

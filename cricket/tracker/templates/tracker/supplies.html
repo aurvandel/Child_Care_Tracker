@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block addItem %}
-<a href="{% url 'index' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+<a href="{% url 'supply-add' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
     <i class="far fa-plus-square" aria-hidden="true"></i>
 </a>
 <a href="{% url 'index' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
@@ -17,27 +17,42 @@
 {% endblock addItem %}
 
 {% block content %}
-        <h1>SUPPLIES</h1>
+
         {% if supplies %}
-            <div class="list-group">
+        <table>
+            <tbody>
                 {% for supply in supplies %}
+                <tr>
                     {% if supply.pastDue %}
-                        <a href="{% url 'supply_complete' supply.pk %}"
-                           data-popup-url="{% url 'supply_complete' supply.pk %}"
-                           class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
-                            {{ supply.lastDelivery }} {{ supply.description }} {{ supply.orderNumber }}
-                        </a> 
-                    {% else %}
-                        <a href="{% url 'supply_complete' supply.pk %}"
+                        <td class="rounded col-10">
+                            <a href="{% url 'supply_complete' supply.pk %}"
                             data-popup-url="{% url 'supply_complete' supply.pk %}"
-                            class="h2 list-group-item list-group-item-action list-group-item-dark">
-                            {{ supply.lastDelivery }} {{ supply.description }} {{ supply.orderNumber }}
-                        
-                        </a>
+                            class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
+                                {{ supply.lastDelivery }} {{ supply.description }} {{ supply.orderNumber }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'supply-update' supply.pk %}" class="bigButtons btn btn-primary btn-lg" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{% url 'supply-delete' supply.pk %}" class="bigButtons btn btn-danger btn-lg" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                        </td>
+                    {% else %}
+                        <td class="rounded col-10">
+                            <a href="{% url 'supply_complete' supply.pk %}"
+                                data-popup-url="{% url 'supply_complete' supply.pk %}"
+                                class="h2 list-group-item list-group-item-action list-group-item-dark">
+                                {{ supply.lastDelivery }} {{ supply.description }} {{ supply.orderNumber }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'supply-update' supply.pk %}" class="bigButtons btn btn-primary btn-lg" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{% url 'supply-delete' supply.pk %}" class="bigButtons btn btn-danger btn-lg" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                        </td>
                     {% endif %}
+                </tr>
                 {% endfor %}
-            </div>
-            {% else %}
+            </tbody>
+        </table>
+        {% else %}
             <p>Please enter some supplies</p>
         {% endif %}
 

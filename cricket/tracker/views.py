@@ -29,6 +29,7 @@ class TodoCreateView(CreateView):
         context["todos"] = Todo.objects.all()
         return context
 
+# Update a task
 class TodoUpdateView(UpdateView):
     model = Todo
     form_class = TodoCreateForm
@@ -38,8 +39,10 @@ class TodoUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["todos"] = Todo.objects.all()
+        context["title"] = "Task"
         return context
 
+# Details of task
 class TodoDetailView(generic.DetailView):
     model = Todo
     context_object_name = "object"
@@ -49,6 +52,7 @@ class TodoDetailView(generic.DetailView):
         context["todos"] = Todo.objects.all()
         return context
 
+# Delete task
 class TodoDeleteView(DeleteView):
     model = Todo
     success_url = reverse_lazy('index')
@@ -79,14 +83,57 @@ def todoUpdateModalView(request, pk):
 #Supply Views
 
 # Supplies list
-class supplies(generic.ListView):
+class supply(generic.ListView):
     model = Supply
     context_object_name = "supplies"
     queryset = Supply.objects.all()
     template_name = "tracker/supplies.html"
 
+# Create new task
+class SupplyCreateView(CreateView):
+    form_class = SuppliesCreateForm
+    template_name = 'tracker/supply_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["supplies"] = Supply.objects.all()
+        return context
+
+# Update a task
+class SupplyUpdateView(UpdateView):
+    model = Supply
+    form_class = SuppliesCreateForm
+    template_name = 'tracker/supply_form.html'
+    success_url = reverse_lazy('supply')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["supplies"] = Supply.objects.all()
+        return context
+
+# Details of task
+class SupplyDetailView(generic.DetailView):
+    model = Supply
+    context_object_name = "object"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["supplies"] = Supply.objects.all()
+        return context
+
+# Delete task
+class SupplyDeleteView(DeleteView):
+    model = Supply
+    success_url = reverse_lazy('supply')
+    template_name = 'tracker/supply_confirm_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["supplies"] = Supply.objects.all()
+        return context
+
 # Adds update frequency to supply order to reset reminder to order new supplies
-def suppliesUpdateModalView(request, pk):
+def supplyUpdateModalView(request, pk):
     supplies = Supply.objects.all()
     context = {}
     context['supplies'] = supplies
