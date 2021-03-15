@@ -1,5 +1,7 @@
 {% extends 'tracker/index.html' %}
 
+{%load crispy_forms_tags %} 
+
 {% block headScripts %}
 
 <script type="text/javascript">
@@ -20,7 +22,7 @@
                 <div class="modal-body">
                     <span class="text-dark"> Create New Task 
                     <form action="" method="post"> {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form|crispy }}
                         <a href="{% url 'index' %}"button type="button" class="btn btn-secondary">Cancel</a>
                         <input type="submit" value="Confirm" class="btn btn-primary"/>
                     </form>

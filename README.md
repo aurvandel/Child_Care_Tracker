@@ -10,6 +10,7 @@ django
 python-dotenv
 django-phone-field
 django-background-tasks
+django-crispy-forms
 
 
 ### Project Milestones
@@ -34,6 +35,8 @@ django-background-tasks
 - [] Code the messaging system to send a reminder to designated users
 - [x] Create page to manage designated users to alert
 - [x] Validate that home page navigates to supply tracker and users, that data can be added and deleted for each
+
+<!-- TODO: add crispy to all the forms -->
 
 #### Mon Mar 22, 2021
 - [] Create monthly calendar to track appointments.
