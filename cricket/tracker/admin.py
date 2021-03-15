@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Todo, Appointment, Supplier, Supply
+from .models import *
 
 # Register your models here.
-models = [Todo, Appointment, Supplier, Supply]
+models = [Todo, Appointment, Supplier, Supply, Contact]
 for model in models:
     admin.site.register(model)

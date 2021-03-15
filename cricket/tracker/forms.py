@@ -19,3 +19,9 @@ class SupplierCreateForm(forms.ModelForm):
         model = Supplier
         fields = '__all__'
         success_url = reverse_lazy('supply')
+
+class ContactCreateForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+        success_url = reverse_lazy('contact')

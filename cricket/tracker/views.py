@@ -83,7 +83,7 @@ def todoUpdateModalView(request, pk):
 #Supply Views
 
 # Supplies list
-class supply(generic.ListView):
+class SupplyList(generic.ListView):
     model = Supply
     context_object_name = "supplies"
     queryset = Supply.objects.all()
@@ -93,6 +93,7 @@ class supply(generic.ListView):
 class SupplyCreateView(CreateView):
     form_class = SuppliesCreateForm
     template_name = 'tracker/supply_form.html'
+    success_url = reverse_lazy('supply')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -153,4 +154,57 @@ class SupplierCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["supplier"] = Supplier.objects.all()
+        return context
+
+#Contact Views
+
+# Contact list
+class ContactList(generic.ListView):
+    model = Contact
+    context_object_name = "contacts"
+    queryset = Contact.objects.all()
+    template_name = "tracker/contact.html"
+
+# Create new contact
+class ContactCreateView(CreateView):
+    form_class = ContactCreateForm
+    template_name = 'tracker/contact_form.html'
+    success_url = reverse_lazy('contact')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contacts"] = Contact.objects.all()
+        return context
+
+# Update a contact
+class ContactUpdateView(UpdateView):
+    model = Contact
+    form_class = ContactCreateForm
+    template_name = 'tracker/contact_form.html'
+    success_url = reverse_lazy('contact')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contact"] = Contact.objects.all()
+        return context
+
+# Details of contact
+class ContactDetailView(generic.DetailView):
+    model = Contact
+    context_object_name = "object"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contacts"] = Contact.objects.all()
+        return context
+
+# Delete contact
+class ContactDeleteView(DeleteView):
+    model = Contact
+    success_url = reverse_lazy('contact')
+    template_name = 'tracker/contact_confirm_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contacts"] = Contact.objects.all()
         return context

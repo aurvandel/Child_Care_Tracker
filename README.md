@@ -32,8 +32,8 @@ django-background-tasks
 - [x] Create the meds and supplies tracker page
 - [x] Create input form to add meds and supplies
 - [] Code the messaging system to send a reminder to designated users
-- [] Create page to manage designated users to alert
-- [] Validate that home page navigates to supply tracker and users, that data can be added and deleted for each
+- [x] Create page to manage designated users to alert
+- [x] Validate that home page navigates to supply tracker and users, that data can be added and deleted for each
 
 #### Mon Mar 22, 2021
 - [] Create monthly calendar to track appointments.

@@ -1,0 +1,31 @@
+{% extends 'tracker/contact.html' %}
+
+{% block headScripts %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#deleteContact").modal('show');
+    });
+</script>
+
+{% endblock %}
+
+{% block modal %}
+    <!-- Modal -->
+
+    <div class="modal fade" id="deleteContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span class="text-dark"> Are You sure you want to delete {{ object.name }}? 
+                    </span>
+                    <form action="" method="post"> {% csrf_token %}
+                        <a href="{% url 'contact' %}"button type="button" class="btn btn-secondary">Cancel</a>
+                        <input type="submit" value="Confirm" class="btn btn-primary"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

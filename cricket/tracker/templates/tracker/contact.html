@@ -1,0 +1,47 @@
+{% extends 'tracker/base.html' %}
+
+{% block headScripts %}
+
+<script src="https://kit.fontawesome.com/3543ae7a77.js" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+{% block addItem %}
+
+<a href="{% url 'contact-add' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+    <i class="fas fa-user-plus" aria-hidden="true"></i>
+</a>
+
+{% endblock addItem %}
+
+{% block content %}
+
+        {% if contacts %}
+        <table>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td class="rounded col-10">
+                        <a href="{% url 'contact-detail' contact.pk %}"
+                            data-popup-url="{% url 'contact-detail' contact.pk %}"
+                            class="h2 list-group-item list-group-item-action list-group-item-dark">
+                            {{ contact.name }} {{ contact.phone }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'contact-update' contact.pk %}" class="bigButtons btn btn-primary btn-lg" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="{% url 'contact-delete' contact.pk %}" class="bigButtons btn btn-danger btn-lg" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Please add contacts</p>
+        {% endif %}
+
+        {% block modal %}
+
+        {% endblock modal %}
+
+{% endblock content %}
