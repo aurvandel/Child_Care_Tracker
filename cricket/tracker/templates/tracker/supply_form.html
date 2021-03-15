@@ -2,6 +2,8 @@
 
 {% block headScripts %}
 
+<script src="https://kit.fontawesome.com/3543ae7a77.js" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("#addSupply").modal('show');
@@ -20,7 +22,18 @@
                 <div class="modal-body">
                     <span class="text-dark"> Create New Supply 
                     <form action="" method="post"> {% csrf_token %}
-                        {{ form.as_p }}
+                        <p> Description: {{form.description }} </p>
+                        <p> Order Number: {{form.orderNumber }} </p>
+                        <p> Category: {{form.category }} </p>
+                        <p> Amount: {{form.amount }} </p>
+                        <p> Supplier: {{form.supplier_id }} 
+                            <a href="{% url 'supplier-add' %}" class="btn btn-success btn-xs" role="button" aria-pressed="true">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </p>
+                        <p> Last Delivery: {{form.lastDelivery }} </p>
+                        <p> Next Delivery: {{form.nextDelivery }} </p>
+                        <p> Frequency: {{form.deliveryFrequency }} </p>
                         <a href="{% url 'supply' %}"button type="button" class="btn btn-secondary">Cancel</a>
                         <input type="submit" value="Confirm" class="btn btn-primary"/>
                     </form>

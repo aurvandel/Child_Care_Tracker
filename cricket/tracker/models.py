@@ -123,3 +123,19 @@ class Appointment(models.Model):
         # order appt by dateTime
         ordering = ['dateTime']
 
+class Contact(models.Model):
+    name = models.CharField(max_length=35)
+    phone = PhoneField(blank=False)
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of a contact.
+        """
+        return reverse('contact-detail', kwargs={'pk':self.pk})  # contact-detail comes form URlS.py
+
+    def __str__(self):
+        return '%s %s' % (self.name, self.phone)
+
+    class Meta:
+        # order contacts by name
+        ordering = ['name']

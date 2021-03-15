@@ -19,4 +19,6 @@ urlpatterns = [
     path('supply/<int:pk>/', SupplyUpdateView.as_view(), name='supply-update'),
     path('supply/<int:pk>/delete/', SupplyDeleteView.as_view(), name='supply-delete'),
     path('supply/<int:pk>/', SupplyDetailView.as_view(), name='supply-detail'),
+
+    path('supplier/add', SupplierCreateView.as_view(), name='supplier-add'),
     ]

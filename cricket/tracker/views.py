@@ -89,7 +89,7 @@ class supply(generic.ListView):
     queryset = Supply.objects.all()
     template_name = "tracker/supplies.html"
 
-# Create new task
+# Create new supply
 class SupplyCreateView(CreateView):
     form_class = SuppliesCreateForm
     template_name = 'tracker/supply_form.html'
@@ -99,7 +99,7 @@ class SupplyCreateView(CreateView):
         context["supplies"] = Supply.objects.all()
         return context
 
-# Update a task
+# Update a supply
 class SupplyUpdateView(UpdateView):
     model = Supply
     form_class = SuppliesCreateForm
@@ -111,7 +111,7 @@ class SupplyUpdateView(UpdateView):
         context["supplies"] = Supply.objects.all()
         return context
 
-# Details of task
+# Details of supply
 class SupplyDetailView(generic.DetailView):
     model = Supply
     context_object_name = "object"
@@ -121,7 +121,7 @@ class SupplyDetailView(generic.DetailView):
         context["supplies"] = Supply.objects.all()
         return context
 
-# Delete task
+# Delete supply
 class SupplyDeleteView(DeleteView):
     model = Supply
     success_url = reverse_lazy('supply')
@@ -145,3 +145,12 @@ def supplyUpdateModalView(request, pk):
     context['obj'] = obj
     return render(request, "tracker/confirm_update_supply.html", context)
 
+# Create new supplier
+class SupplierCreateView(CreateView):
+    form_class = SupplierCreateForm
+    template_name = 'tracker/supplier_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["supplier"] = Supplier.objects.all()
+        return context
