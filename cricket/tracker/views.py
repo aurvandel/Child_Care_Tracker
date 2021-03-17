@@ -3,7 +3,6 @@ from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .task import notify_users
 
 from .models import *
 from .forms import *
@@ -11,7 +10,7 @@ from .forms import *
 # Create your views here.
 
 # Task views
-notify_users()
+
 # Index starts at todo list for now
 class index(generic.ListView):
     model = Todo

@@ -17,6 +17,9 @@ Including another URLconf
 from django.urls import path, include
 from tracker import views
 from django.conf.urls import url
+from tracker.task import notify_users
+from background_task.models import Task
+
 
 urlpatterns = [
     path('', views.index.as_view(), name='index'),
@@ -24,3 +27,6 @@ urlpatterns = [
 
 
 ]
+
+if not Task.objects.filter(verbose_name="notify_users").exists():
+    notify_users(repeat=60, verbose_name="notify_users")

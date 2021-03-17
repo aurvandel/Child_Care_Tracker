@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from background_task import background
 from .models import Contact, Todo
 
-# @background(schedule=60)
+@background(schedule=60)
 def notify_users():
     # get users addresses
     fromEmail = 'parkergw@gmail.com'
