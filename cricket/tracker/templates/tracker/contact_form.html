@@ -22,7 +22,7 @@
                 <div class="modal-body">
                     <span class="text-dark"> Create New Contact 
                     <form action="" method="post"> {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form|crispy }}
                         <a href="{% url 'contact' %}"button type="button" class="btn btn-secondary">Cancel</a>
                         <input type="submit" value="Confirm" class="btn btn-primary"/>
                     </form>

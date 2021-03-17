@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'phone_field',
     "tracker",
     'crispy_forms',
+    'background_task',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

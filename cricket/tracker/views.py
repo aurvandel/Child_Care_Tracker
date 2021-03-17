@@ -3,7 +3,7 @@ from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-#from bootstrap_modal_forms.generic import BSModalUpdateView
+from .task import notify_users
 
 from .models import *
 from .forms import *
@@ -11,7 +11,7 @@ from .forms import *
 # Create your views here.
 
 # Task views
-
+notify_users()
 # Index starts at todo list for now
 class index(generic.ListView):
     model = Todo
@@ -182,6 +182,7 @@ class ContactUpdateView(UpdateView):
     form_class = ContactCreateForm
     template_name = 'tracker/contact_form.html'
     success_url = reverse_lazy('contact')
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

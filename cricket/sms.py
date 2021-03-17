@@ -23,7 +23,7 @@ def select_all_tasks(conn):
     :return:
     """
     cur = conn.cursor()
-    cur.execute("SELECT * FROM tracker_supply")
+    cur.execute("SELECT * FROM tracker_contact")
 
     rows = cur.fetchall()
 

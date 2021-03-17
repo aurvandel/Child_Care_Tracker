@@ -3,6 +3,7 @@ from django.urls import reverse
 from phone_field import PhoneField
 from django.utils import timezone
 import datetime
+import string
 
 # Create your models here.
 
@@ -124,8 +125,18 @@ class Appointment(models.Model):
         ordering = ['dateTime']
 
 class Contact(models.Model):
+    
+    CATEGORIES = (
+        ('@txt.att.net', 'AT&T'),
+        ('@tmomail.net', 'T-Mobile'),
+        ('@messaging.sprintpcs.com', 'Sprint'),
+        ('@vtext.com', 'Verizon'),
+        ('OTHER', 'Other'),
+    )
     name = models.CharField(max_length=35)
     phone = PhoneField(blank=False)
+    provider = models.CharField(max_length=30, choices=CATEGORIES, default='T-Mobile')
+
 
     def get_absolute_url(self):
         """
@@ -135,6 +146,15 @@ class Contact(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.name, self.phone)
+
+    def getEmail(self):
+        phone = str(self.phone)
+        badChars = ["(", ")", " ", "-"]
+        delete_dict = {sp_character: '' for sp_character in string.punctuation}
+        delete_dict[' '] = ''
+        table = str.maketrans(delete_dict)
+        phone = phone.translate(table) 
+        return '%s%s' % (str(phone), self.provider)
 
     class Meta:
         # order contacts by name
