@@ -29,4 +29,4 @@ urlpatterns = [
 ]
 
 if not Task.objects.filter(verbose_name="notify_users").exists():
-    notify_users(repeat=60, verbose_name="notify_users")
+    notify_users(repeat=10, verbose_name="notify_users")
