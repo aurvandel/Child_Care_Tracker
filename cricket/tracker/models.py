@@ -22,13 +22,16 @@ class Todo(models.Model):
         return reverse('todo-detail', kwargs={'pk':self.pk})  # task-detail comes form URlS.py
 
     def __str__(self):
-        return self.task
+        return str(self.task)
 
     def getDate(self):
         return self.todoTime.strftime('%x')
 
     def getTime(self):
         return self.todoTime.strftime('%X')
+
+    def getMessage(self):
+        return '%s is due at %s' % (self.task, self.getTime())
 
     @property
     def pastDue(self):

@@ -19,8 +19,7 @@ def notify_users():
         for task in tasks:
             if not task.messageSent:
                 print(task)
-                msgs.append(task + " is due at " + task.getTime)
-
+                msgs.append(self.getMessage())
 
 
     # get users addresses
@@ -29,15 +28,20 @@ def notify_users():
     user = Contact.objects.get(pk=2)
 
     addresses = []
-    # users = Contact.objects.all()
-    # for user in user:
+    users = Contact.objects.all()
+    if users.exists():
+        for user in users:
+            addresses.append(user.getEmail())
 
-    # send_mail(
-    # '',
-    # 'Here is the message.',
-    # fromEmail,
-    # [user.getEmail()],
-    # fail_silently=False,
-# )
+    # send messages
+    for msg in msgs:
+
+        send_mail(
+            '',
+            msg,
+            fromEmail,
+            addresses,
+            fail_silently=False,
+        )
         
         
