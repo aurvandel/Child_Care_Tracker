@@ -13,6 +13,7 @@ class Todo(models.Model):
     lastDone = models.DateTimeField(blank=True, null=True)
     recurring = models.BooleanField(default=False, blank=True)
     completed = models.BooleanField(default=False, blank=True)
+    messageSent = models.BooleanField(default=False, blank=True)
 
     def get_absolute_url(self):
         """
@@ -41,6 +42,13 @@ class Todo(models.Model):
     def updateTodo(self):
         self.lastDone = self.todoTime
         self.todoTime += datetime.timedelta(days=1)
+
+    @property
+    def updateMessageSent(self):
+        if self.messageSent:
+            self.messageSent = False
+        else:
+            self.messageSent = True
 
     class Meta:
         # order tasks by time

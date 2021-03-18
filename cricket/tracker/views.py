@@ -22,6 +22,7 @@ class index(generic.ListView):
 class TodoCreateView(CreateView):
     form_class = TodoCreateForm
     template_name = 'tracker/todo_form.html'
+    success_url = "tracker/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
