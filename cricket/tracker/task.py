@@ -18,8 +18,8 @@ def notify_users():
     if tasks.exists():
         for task in tasks:
             if not task.messageSent:
-                print(task)
-                msgs.append(self.getMessage())
+                print(task.getMessage)
+                msgs.append(task.getMessage())
 
 
     # get users addresses
