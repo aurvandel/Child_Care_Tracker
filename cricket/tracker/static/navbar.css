@@ -86,3 +86,63 @@ h1.title {
   line-height: .5;
   border-radius: .2rem;
 }
+
+/* CSS for calendar */
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr, .calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* change size of calander here */
+.calendar td {
+  width: 200px;
+  height: 115px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+.calendar ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+.calendar a {
+  color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/* .btn {
+  outline: none;
+  color: white;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+} */
+
+.clearfix {
+  margin: 0px 15px 5px 15px;
+}

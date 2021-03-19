@@ -28,4 +28,6 @@ urlpatterns = [
     path('contact/<int:pk>/', ContactDetailView.as_view(), name='contact-detail'),
 
     path('supplier/add', SupplierCreateView.as_view(), name='supplier-add'),
+
+    url(r'calendar/$', CalendarView.as_view(), name='calendar'),
     ]

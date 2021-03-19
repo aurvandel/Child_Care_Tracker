@@ -118,7 +118,7 @@ class Supply(models.Model):
 
 class Appointment(models.Model):
     dateTime = models.DateTimeField()
-    seeing = models.CharField(max_length=35)
+    description = models.CharField(max_length=35)
     address = models.CharField(max_length=35, blank=True)
     phone = PhoneField(blank=True)
 
@@ -129,7 +129,7 @@ class Appointment(models.Model):
         return reverse('appt-detail', kwargs={'pk':self.pk})  # appt-detail comes form URlS.py
 
     def __str__(self):
-        return '%s %s' % (self.dateTime, self.seeing)
+        return '%s %s' % (self.dateTime, self.description)
 
     class Meta:
         # order appt by dateTime
