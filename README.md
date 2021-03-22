@@ -38,8 +38,8 @@ django-crispy-forms
 
 #### Mon Mar 22, 2021
 - [x] Create monthly calendar to track appointments.
-- [] Create input form to add to calendar
-- [] Validate monthly calendar, input and deletion
+- [x] Create input form to add to calendar
+- [x] Validate monthly calendar, input and deletion
 - [] Deploy everything up to this point to production webserver software (Apache) running on Raspberry Pi to ensure it works as intended
 
 #### Mon Apr 5, 2021

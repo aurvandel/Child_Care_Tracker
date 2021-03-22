@@ -25,3 +25,9 @@ class ContactCreateForm(forms.ModelForm):
         model = Contact
         fields = '__all__'
         success_url = reverse_lazy('contact')
+
+class ApptCreateForm(forms.ModelForm):
+    class Meta:
+        model = Appointment
+        fields = '__all__'
+        success_url = reverse_lazy('calendar')

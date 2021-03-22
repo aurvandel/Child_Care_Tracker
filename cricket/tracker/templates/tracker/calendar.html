@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block addItem %}
-<a href="{% url 'todo-add' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
+<a href="{% url 'calendar-add' %}" class="btn btn-success btn-lg addItem" role="button" aria-pressed="true">
     <i class="far fa-calendar-plus" aria-hidden="true"></i>
 </a>
 {% endblock addItem %}
@@ -18,4 +18,9 @@
         <a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
     </div>
 {{ calendar }}
+
+{% block modal %}
+
+{% endblock modal %}
+
 {% endblock %}

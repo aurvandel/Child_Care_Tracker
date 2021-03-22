@@ -13,10 +13,10 @@ class Calendar(HTMLCalendar):
 	# formats a day as a td
 	# filter events by day
 	def formatday(self, day, events):
-		events_per_day = events.filter(dateTime__day=day)
+		events_per_day = events.filter(apptDate__day=day)
 		d = ''
 		for event in events_per_day:
-			d += f'<li> {event.description} </li>'
+			d += f'<li> {event} {event.getEditURL} {event.getDeleteURL} </li>'
 
 		if day != 0:
 			return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
@@ -32,7 +32,7 @@ class Calendar(HTMLCalendar):
 	# formats a month as a table
 	# filter events by year and month
 	def formatmonth(self, withyear=True):
-		events = Appointment.objects.filter(dateTime__year=self.year, dateTime__month=self.month)
+		events = Appointment.objects.filter(apptDate__year=self.year, apptDate__month=self.month)
 
 		cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
 		cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
@@ -40,3 +40,5 @@ class Calendar(HTMLCalendar):
 		for week in self.monthdays2calendar(self.year, self.month):
 			cal += f'{self.formatweek(week, events)}\n'
 		return cal
+
+

@@ -117,23 +117,34 @@ class Supply(models.Model):
         ordering = ['description']
 
 class Appointment(models.Model):
-    dateTime = models.DateTimeField()
+    apptTime = models.TimeField()
+    apptDate = models.DateTimeField()
     description = models.CharField(max_length=35)
     address = models.CharField(max_length=35, blank=True)
     phone = PhoneField(blank=True)
 
+    @property
+    def getEditURL(self):
+        url = reverse('calendar-update', args=(self.pk,))
+        return f'<a href="{url}" class="bigButtons btn btn-primary btn-xs" role="button" aria-pressed="true"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>'
+
+    @property
+    def getDeleteURL(self):
+        url = reverse('calendar-delete', args=(self.pk,))
+        return f'<a href="{url}" class="bigButtons btn btn-danger btn-xs" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a>'
+    
     def get_absolute_url(self):
         """
         Returns the url to access a particular instance of a appt.
         """
-        return reverse('appt-detail', kwargs={'pk':self.pk})  # appt-detail comes form URlS.py
+        return reverse('calendar-detail', kwargs={'pk':self.pk})  # appt-detail comes form URlS.py
 
     def __str__(self):
-        return '%s %s' % (self.dateTime, self.description)
+        return '%s %s' % (self.apptTime.strftime("%H:%M"), self.description)
 
     class Meta:
         # order appt by dateTime
-        ordering = ['dateTime']
+        ordering = ['apptDate', 'apptTime']
 
 class Contact(models.Model):
     

@@ -237,6 +237,7 @@ class CalendarView(generic.ListView):
         context['next_month'] = next_month(d)
         return context
 
+# Helpers for calander
 def get_date(req_month):
     if req_month:
         year, month = (int(x) for x in req_month.split('-'))
@@ -255,3 +256,58 @@ def next_month(d):
     next_month = last + datetime.timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
+
+# Create new appt
+class ApptCreateView(CreateView):
+    form_class = ApptCreateForm
+    template_name = 'tracker/appt_form.html'
+    success_url = reverse_lazy('calendar')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # use today's date for the calendar
+        d = get_date(self.request.GET.get('month', None))
+
+        # Instantiate our calendar class with today's year and date
+        cal = Calendar(d.year, d.month)
+
+        # Call the formatmonth method, which returns our calendar as a table
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
+        return context
+
+# Update a appointment
+class ApptUpdateView(UpdateView):
+    model = Appointment
+    form_class = ApptCreateForm
+    template_name = 'tracker/appt_form.html'
+    success_url = reverse_lazy('calendar')
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["calendar"] = Appointment.objects.all()
+        return context
+
+# Details of contact
+class ApptDetailView(generic.DetailView):
+    model = Appointment
+    context_object_name = "object"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["calendar"] = Appointment.objects.all()
+        return context
+
+# Delete contact
+class ApptDeleteView(DeleteView):
+    model = Appointment
+    success_url = reverse_lazy('calendar')
+    template_name = 'tracker/appt_confirm_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["calendar"] = Appointment.objects.all()
+        return context
