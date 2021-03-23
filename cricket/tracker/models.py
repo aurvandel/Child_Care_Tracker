@@ -28,7 +28,7 @@ class Todo(models.Model):
         return self.todoTime.strftime('%x')
 
     def getTime(self):
-        return self.todoTime.strftime('%X')
+        return self.todoTime.strftime('%I:%M %p')
 
     def getMessage(self):
         return '%s is due at %s' % (self.task, self.getTime())
@@ -137,10 +137,11 @@ class Appointment(models.Model):
         """
         Returns the url to access a particular instance of a appt.
         """
-        return reverse('calendar-detail', kwargs={'pk':self.pk})  # appt-detail comes form URlS.py
+        url = reverse('calendar-detail', args=(self.pk,))
+        return f'<a href="{url}"> {self.__str__()} </a>'
 
     def __str__(self):
-        return '%s %s' % (self.apptTime.strftime("%H:%M"), self.description)
+        return '%s %s' % (self.apptTime.strftime("%I:%M %p"), self.description)
 
     class Meta:
         # order appt by dateTime

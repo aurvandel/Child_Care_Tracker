@@ -41,6 +41,7 @@ django-crispy-forms
 - [x] Create input form to add to calendar
 - [x] Validate monthly calendar, input and deletion
 - [] Deploy everything up to this point to production webserver software (Apache) running on Raspberry Pi to ensure it works as intended
+- [] Redo dateTime fields as seperate date and time for tasks and supplies
 
 #### Mon Apr 5, 2021
 - [] Continue testing and troubleshooting production level deployment

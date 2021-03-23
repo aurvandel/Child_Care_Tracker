@@ -32,6 +32,6 @@ urlpatterns = [
     url(r'calendar/$', CalendarView.as_view(), name='calendar'),
     url(r'calendar/add/$', ApptCreateView.as_view(), name='calendar-add'),
     path(r'calendar/edit/<int:pk>/', ApptUpdateView.as_view(), name='calendar-update'),
-    url(r'calendar/<int:pk>/$', ApptDetailView.as_view(), name='calendar-detail'),
+    path(r'calendar/<int:pk>/', ApptDetailView.as_view(), name='calendar-detail'),
     path(r'calendar/<int:pk>/delete/', ApptDeleteView.as_view(), name='calendar-delete'),
     ]

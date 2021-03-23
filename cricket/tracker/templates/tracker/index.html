@@ -37,7 +37,7 @@
                         <td class="rounded col-10">
                             <a href="{% url 'task_complete' todo.pk %}"
                                 data-popup-url="{% url 'task_complete' todo.pk %}"
-                                class="h2 list-group-item list-group-item-action list-group-item-dark">
+                                class="h2 list-group-item list-group-item-action list-group-item-success">
                                 {{ todo.getDate }} {{ todo.getTime }} {{ todo.task }}
                             </a>
                         </td>

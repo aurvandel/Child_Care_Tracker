@@ -1,0 +1,41 @@
+{% extends 'tracker/calendar.html' %}
+
+{%load crispy_forms_tags %} 
+
+{% block headScripts %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#apptDetail").modal('show');
+    });
+</script>
+
+<script src="https://use.fontawesome.com/fab2f8d95c.js"></script>
+
+{% endblock %}
+
+{% block modal %}
+    <!-- Modal -->
+
+    <div class="modal fade" id="apptDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-dark"> Appointment Details </div>
+                    <div class="text-dark">
+                        <p>Description: {{object.description}}</p>
+                        <p>Date: {{object.apptDate}} {{object.apptTime}}</p>
+                        <p>Address: {{object.address}}</p>
+                        <p>Phone: {{object.phone}}</p>
+                    </div>
+                    <form action="" method="post"> {% csrf_token %}
+                        <a href="{% url 'calendar' %}"button type="button" class="btn btn-primary">Close</a>
+                        <a href="{% url 'calendar-update' object.pk %}" class="bigButtons btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="{% url 'calendar-delete' object.pk %}" class="bigButtons btn btn-danger btn-sm" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

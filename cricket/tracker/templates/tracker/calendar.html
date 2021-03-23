@@ -14,8 +14,8 @@
 {% block content %}
 <!-- Make these buttons transperent, stuck to the side and on top of the calendar -->
     <div class="clearfix">
-        <a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous Month </a>
-        <a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
+        <a class="position-absolute mid-left btn btn-info" href="{% url 'calendar' %}?{{ prev_month }}"> <i class="fas fa-chevron-left"></i> </a>
+        <a class="position-absolute mid-right btn btn-info" href="{% url 'calendar' %}?{{ next_month }}"> <i class="fas fa-chevron-right"></i> </a>
     </div>
 {{ calendar }}
 
