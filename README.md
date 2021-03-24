@@ -45,8 +45,9 @@ django-crispy-forms
 
 #### Mon Apr 5, 2021
 - [] Continue testing and troubleshooting production level deployment
-- [] Design and/or print case for wall mountable
+- ~~[] Design and/or print case for wall mountable~~
 - [] Create speech to text module for easier inputting of data
+- [] TSS to read out tasks when they come due.
 - [] Validate speech to text for accuracy. I’ll have everyone in my household try it
 - [] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
 - [] Final testing and troubleshooting of full deployment
