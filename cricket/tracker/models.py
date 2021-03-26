@@ -8,7 +8,8 @@ import string
 # Create your models here.
 
 class Todo(models.Model):
-    todoTime = models.DateTimeField()
+    todoTime = models.TimeField()
+    todoDate = models.DateField()
     task = models.CharField(max_length=255)
     lastDone = models.DateTimeField(blank=True, null=True)
     recurring = models.BooleanField(default=False, blank=True)
@@ -25,17 +26,20 @@ class Todo(models.Model):
         return str(self.task)
 
     def getDate(self):
-        return self.todoTime.strftime('%x')
+        #return self.todoTime.strftime('%x')
+        return self.todoDate
 
     def getTime(self):
-        return self.todoTime.strftime('%I:%M %p')
+        #return self.todoTime.strftime('%I:%M %p')
+        return self.todoTime
 
     def getMessage(self):
         return '%s is due at %s' % (self.task, self.getTime())
 
     @property
     def pastDue(self):
-        return timezone.now() > self.todoTime
+        dt = datetime.datetime.combine(self.todoDate, self.todoTime)
+        return timezone.make_naive(timezone.now()) > dt
 
     @property
     def getCompleted(self):
@@ -43,8 +47,8 @@ class Todo(models.Model):
 
     @property
     def updateTodo(self):
-        self.lastDone = self.todoTime
-        self.todoTime += datetime.timedelta(days=1)
+        self.lastDone = datetime.datetime.combine(self.todoDate, self.todoTime)
+        self.todoDate += datetime.timedelta(days=1)
 
     @property
     def updateMessageSent(self):

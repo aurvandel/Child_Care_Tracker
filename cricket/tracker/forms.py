@@ -5,7 +5,7 @@ from .models import *
 class TodoCreateForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ['todoTime', 'task', 'lastDone', 'recurring', 'completed']
+        fields = ['todoDate', 'todoTime', 'task', 'lastDone', 'recurring', 'completed']
         success_url = reverse_lazy('index')
 
 class SuppliesCreateForm(forms.ModelForm):

@@ -11,6 +11,9 @@ python-dotenv
 django-phone-field
 django-background-tasks
 django-crispy-forms
+gtts
+playsound
+SpeechRecognition
 
 
 ### Project Milestones
@@ -41,7 +44,7 @@ django-crispy-forms
 - [x] Create input form to add to calendar
 - [x] Validate monthly calendar, input and deletion
 - [] Deploy everything up to this point to production webserver software (Apache) running on Raspberry Pi to ensure it works as intended
-- [] Redo dateTime fields as seperate date and time for tasks and supplies
+
 
 #### Mon Apr 5, 2021
 - [] Continue testing and troubleshooting production level deployment
@@ -49,5 +52,6 @@ django-crispy-forms
 - [] Create speech to text module for easier inputting of data
 - [] TSS to read out tasks when they come due.
 - [] Validate speech to text for accuracy. I’ll have everyone in my household try it
+- [x] Redo dateTime fields as seperate date and time for tasks and supplies
 - [] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
 - [] Final testing and troubleshooting of full deployment

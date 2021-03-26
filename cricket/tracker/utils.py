@@ -2,8 +2,6 @@ from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Appointment
 
-#TODO: look at how to overide the month header to add the next and prev buttons to the header
-
 class Calendar(HTMLCalendar):
 	def __init__(self, year=None, month=None):
 		self.year = year

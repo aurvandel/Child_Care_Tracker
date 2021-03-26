@@ -154,10 +154,11 @@ def supplyUpdateModalView(request, pk):
 class SupplierCreateView(CreateView):
     form_class = SupplierCreateForm
     template_name = 'tracker/supplier_form.html'
+    success_url = reverse_lazy('supply')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["supplier"] = Supplier.objects.all()
+        context["supplies"] = Supply.objects.all()
         return context
 
 #Contact Views
@@ -288,7 +289,17 @@ class ApptUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["calendar"] = Appointment.objects.all()
+        # use today's date for the calendar
+        d = get_date(self.request.GET.get('month', None))
+
+        # Instantiate our calendar class with today's year and date
+        cal = Calendar(d.year, d.month)
+
+        # Call the formatmonth method, which returns our calendar as a table
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
         return context
 
 # Details of contact
@@ -298,7 +309,17 @@ class ApptDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["calendar"] = Appointment.objects.all()
+        # use today's date for the calendar
+        d = get_date(self.request.GET.get('month', None))
+
+        # Instantiate our calendar class with today's year and date
+        cal = Calendar(d.year, d.month)
+
+        # Call the formatmonth method, which returns our calendar as a table
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
         return context
 
 # Delete contact
@@ -309,5 +330,15 @@ class ApptDeleteView(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["calendar"] = Appointment.objects.all()
+        # use today's date for the calendar
+        d = get_date(self.request.GET.get('month', None))
+
+        # Instantiate our calendar class with today's year and date
+        cal = Calendar(d.year, d.month)
+
+        # Call the formatmonth method, which returns our calendar as a table
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
         return context

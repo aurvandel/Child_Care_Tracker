@@ -17,6 +17,8 @@
         <!-- jquery only worked when I put it up here -->
         <script  src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+
+
         {% block headScripts %}
             <!-- Use for extra scripts otherwise ignore -->
         {% endblock %}
@@ -30,19 +32,21 @@
                     <div class="col-md-5">
 
                         <!-- Navigation tabs -->
-                        <ul class="nav nav-tabs me-auto mb-2 mb-sm-0">
+                        <ul class="nav nav-tabs me-auto mb-2 mb-sm-0" id="myTab" role="tablist">
+                            {% with url_name=request.resolver_match.url_name %}
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Schedule</a>
+                                <a class="nav-link {% if 'index' in url_name or 'todo' in url_name or 'task' in url_name %}active{% endif %}" id="index-tab" data-toggle="tab" role="tab" aria-controls="index" aria-selected="true" href="{% url 'index' %}">Schedule</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'supply' %}">Supplies</a>
+                                <a class="nav-link {% if 'supply' in url_name %}active{% endif %}" id="supplies-tab" data-toggle="tab" role="tab" aria-controls="supplies" aria-selected="false" href="{% url 'supply' %}">Supplies</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+                                <a class="nav-link {% if 'calendar' in url_name %}active{% endif %}" id="cal-tab" data-toggle="tab" role="tab" aria-controls="cal" aria-selected="false" href="{% url 'calendar' %}">Calendar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
+                                <a class="nav-link {% if 'contact' in url_name %}active{% endif %}" id="contacts-tab" data-toggle="tab" role="tab" aria-controls="contacts" aria-selected="false" href="{% url 'contact' %}">Contacts</a>
                             </li>
+                            {% endwith %}
                         </ul>
                     </div>
 
