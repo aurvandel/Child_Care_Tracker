@@ -55,3 +55,5 @@ SpeechRecognition
 - [x] Redo dateTime fields as seperate date and time for tasks and supplies
 - [] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
 - [] Final testing and troubleshooting of full deployment
+
+TODO: Add width class of 1210px to all the lists.
