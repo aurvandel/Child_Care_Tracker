@@ -3,12 +3,15 @@ from background_task import background
 from tracker.models import Contact, Todo
 from django.utils import timezone
 import datetime
+from google.cloud import texttospeech
+from playsound import playsound
+import os
 
 # timezone.make_naive to get time in timezone
 
 @background(schedule=0)
 def notify_users():
-    print("task ran at ", timezone.make_naive(timezone.now()))
+    #print("task ran at ", timezone.make_naive(timezone.now()))
 
     # get tasks that are due soon and put in list
     msgs = []
@@ -21,6 +24,19 @@ def notify_users():
                 print(task.getMessage)
                 msgs.append(task.getMessage())
 
+    # Say what tasks are due
+    tts_client = texttospeech.TextToSpeechClient()
+    params = texttospeech.VoiceSelectionParams(language_code='en-US', ssml_gender=texttospeech.SsmlVoiceGender.FEMALE)
+    audio = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3)
+    si = texttospeech.SynthesisInput(text='Peter Piper picked a peck of pickled peppers.')
+    response = tts_client.synthesize_speech(input=si, voice=params, audio_config=audio)
+    f = open('task.mp3', 'wb')
+    f.write(response.audio_content)
+    f.close()
+    playsound('task.mp3')
+
+    if os.path.exists("task.mp3"):
+        os.remove("task.mp3")
 
     # get users addresses
     fromEmail = 'parkergw@gmail.com'
