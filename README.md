@@ -47,6 +47,7 @@ SpeechRecognition
 
 
 #### Mon Apr 5, 2021
+- [x] Find js keyboard to use for input
 - [x] Added js keyboard
 - [] Continue testing and troubleshooting production level deployment
 - ~~[] Design and/or print case for wall mountable~~
@@ -56,6 +57,6 @@ SpeechRecognition
 - [x] Redo dateTime fields as seperate date and time for tasks and supplies
 - [] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
 - [] Final testing and troubleshooting of full deployment
-- [] Find js keyboard to use for input
+
 
 TODO: widget tweaks to add class to supplies
