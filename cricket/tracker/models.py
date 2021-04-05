@@ -38,6 +38,7 @@ class Todo(models.Model):
 
     @property
     def pastDue(self):
+        print(self.todoTime)
         dt = datetime.datetime.combine(self.todoDate, self.todoTime)
         return timezone.make_naive(timezone.now()) > dt
 

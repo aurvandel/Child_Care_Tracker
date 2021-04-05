@@ -11,13 +11,30 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-        <!-- my CSS -->
-        <link rel="stylesheet" href="{% static 'navbar.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/virtual-keyboard/1.30.3/css/keyboard-basic.min.css" integrity="sha512-2bVDVxlsH8oY3RrNeI1uJOAXWmjfEwQ9/dfJ/XM4dG5w8R3W3vSTQccpkzJWndrRo2HNXkiM4tjikPCp111sQg==" crossorigin="anonymous" />
 
         <!-- jquery only worked when I put it up here -->
         <script  src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
+        <!-- my CSS -->
+        <link rel="stylesheet" href="{% static 'navbar.css' %}">
+        
+        <script>
+            /* VIRTUAL KEYBOARD DEMO - https://github.com/Mottie/Keyboard */
+            $(function() {
+        
+                $('.keyboard').keyboard({
+                    layout: "qwerty", // string or array
+                    beforeVisible: function(e, keyboard, el) {
+                        var inModal = $(el).parents('.modal').length > 0;
+                            if (inModal) {
+                                keyboard.$keyboard.appendTo($(el).parents('.modal-body'));
+                            }
+                    }
+                });
+        
+            });
+        </script>
 
         {% block headScripts %}
             <!-- Use for extra scripts otherwise ignore -->
@@ -76,14 +93,16 @@
         <!-- Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-        <!-- django-bootstrap-modal-forms library -->
-        <!-- <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/virtual-keyboard/1.30.3/js/jquery.keyboard.min.js" integrity="sha512-kn7vywxyq0CbPJQ5sONZvgHQB7YSR/2q6xQmEz/KwiFcriJtXz5hZcyZhx6fpy/UiStulxD1TByHXaCZz4BJ9A==" crossorigin="anonymous"></script>
+
 
         <!-- js code for my custom clock -->
         <script src="{% static 'clock.js' %}"></script>
         <script>
             currentTime();
         </script>
+        
 
     </body>
 </html>

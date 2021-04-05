@@ -140,3 +140,11 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = str(os.getenv('EMAIL'))
 EMAIL_HOST_PASSWORD = str(os.getenv('GMAILPASS'))
+
+# Crispy stuff
+CRISPY_CLASS_CONVERTERS = {
+    'dateinput': "dateinput keyboard ui-keyboard-input ui-widget-content ui-corner-all",
+    'timeinput': 'timeinput keyboard ui-keyboard-input ui-widget-content ui-corner-all',
+    'textinput': 'textinput keyboard ui-keyboard-input ui-widget-content ui-corner-all',
+    'datetimeinput': 'datetimeinput keyboard ui-keyboard-input ui-widget-content ui-corner-all'
+}

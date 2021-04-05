@@ -22,7 +22,7 @@
                 {% if not todo.getCompleted %}
                 <tr>
                     {% if todo.pastDue %}
-                        <td class="rounded col-10">
+                        <td class="rounded w-1210">
                             <a href="{% url 'task_complete' todo.pk %}"
                                 data-popup-url="{% url 'task_complete' todo.pk %}"
                                 class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
@@ -34,7 +34,7 @@
                             <a href="{% url 'todo-delete' todo.pk %}" class="bigButtons btn btn-danger btn-lg" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
                         </td> 
                     {% else %}
-                        <td class="rounded col-10">
+                        <td class="rounded w-1210">
                             <a href="{% url 'task_complete' todo.pk %}"
                                 data-popup-url="{% url 'task_complete' todo.pk %}"
                                 class="h2 list-group-item list-group-item-action list-group-item-success">

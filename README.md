@@ -47,13 +47,15 @@ SpeechRecognition
 
 
 #### Mon Apr 5, 2021
+- [x] Added js keyboard
 - [] Continue testing and troubleshooting production level deployment
 - ~~[] Design and/or print case for wall mountable~~
 - [] Create speech to text module for easier inputting of data
-- [] TSS to read out tasks when they come due.
+- [x] TSS to read out tasks when they come due.
 - [] Validate speech to text for accuracy. I’ll have everyone in my household try it
 - [x] Redo dateTime fields as seperate date and time for tasks and supplies
 - [] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
 - [] Final testing and troubleshooting of full deployment
+- [] Find js keyboard to use for input
 
-TODO: Add width class of 1210px to all the lists.
+TODO: widget tweaks to add class to supplies

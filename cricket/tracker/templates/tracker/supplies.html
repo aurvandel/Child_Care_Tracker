@@ -24,7 +24,7 @@
                 {% for supply in supplies %}
                 <tr>
                     {% if supply.pastDue %}
-                        <td class="rounded col-10">
+                        <td class="rounded w-1210">
                             <a href="{% url 'supply_complete' supply.pk %}"
                             data-popup-url="{% url 'supply_complete' supply.pk %}"
                             class="h2 list-group-item list-group-item-action list-group-item-danger open-task">
@@ -36,7 +36,7 @@
                             <a href="{% url 'supply-delete' supply.pk %}" class="bigButtons btn btn-danger btn-lg" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
                         </td>
                     {% else %}
-                        <td class="rounded col-10">
+                        <td class="rounded w-1210">
                             <a href="{% url 'supply_complete' supply.pk %}"
                                 data-popup-url="{% url 'supply_complete' supply.pk %}"
                                 class="h2 list-group-item list-group-item-action list-group-item-dark">

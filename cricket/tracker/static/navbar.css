@@ -192,3 +192,29 @@ h1.title {
 .fa-chevron-right {
   font-size: 36px;
 }
+
+.w-1210 {
+  width: 1210px;
+}
+
+.ui-keyboard {
+  font-size: 10px;
+  z-index: 1601;
+  position: absolute;
+  background: none;
+  border: none;
+  left: -25%;
+  width: unset;
+
+}
+
+.wrap {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+}
+
+:not(.ui-keyboard-preview-wrapper) > .keyboard {
+  display: inline;
+  width: initial;
+}
