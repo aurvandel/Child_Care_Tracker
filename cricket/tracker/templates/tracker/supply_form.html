@@ -1,6 +1,7 @@
 {% extends 'tracker/supplies.html' %}
 
-{%load crispy_forms_tags %} 
+{% load crispy_forms_tags %} 
+{% load widget_tweaks %}
 
 {% block headScripts %}
 
@@ -24,18 +25,18 @@
                 <div class="modal-body">
                     <span class="text-dark"> Create New Supply 
                     <form action="" method="post"> {% csrf_token %}
-                        <p> Description: {{form.description }} </p>
-                        <p> Order Number: {{form.orderNumber }} </p>
-                        <p> Category: {{form.category }} </p>
-                        <p> Amount: {{form.amount }} </p>
-                        <p> Supplier: {{form.supplier_id }} 
+                        <p> Description: {{form.description | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
+                        <p> Order Number: {{form.orderNumber | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
+                        <p> Category: {{form.category | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
+                        <p> Amount: {{form.amount | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
+                        <p> Supplier: {{form.supplier_id | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} 
                             <a href="{% url 'supplier-add' %}" class="btn btn-success btn-xs" role="button" aria-pressed="true">
                                 <i class="fas fa-plus"></i>
                             </a>
                         </p>
-                        <p> Last Delivery: {{form.lastDelivery }} </p>
-                        <p> Next Delivery: {{form.nextDelivery }} </p>
-                        <p> Frequency: {{form.deliveryFrequency }} </p>
+                        <p> Last Delivery: {{form.lastDelivery | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
+                        <p> Next Delivery: {{form.nextDelivery | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
+                        <p> Frequency: {{form.deliveryFrequency | add_class:'keyboard ui-keyboard-input ui-widget-content ui-corner-all'}} </p>
                         <a href="{% url 'supply' %}"button type="button" class="btn btn-secondary">Cancel</a>
                         <input type="submit" value="Confirm" class="btn btn-primary"/>
                     </form>
