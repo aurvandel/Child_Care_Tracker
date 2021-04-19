@@ -14,7 +14,6 @@ class Calendar(HTMLCalendar):
 		events_per_day = events.filter(apptDate__day=day)
 		d = ''
 		for event in events_per_day:
-			# d += f'<li> {event} {event.getEditURL} {event.getDeleteURL} </li>'
 			d += f'<li> {event.get_absolute_url()} </li>'
 
 		if day != 0:

@@ -43,17 +43,17 @@ SpeechRecognition
 - [x] Create monthly calendar to track appointments.
 - [x] Create input form to add to calendar
 - [x] Validate monthly calendar, input and deletion
-- [] Deploy everything up to this point to production webserver software (Apache) running on Raspberry Pi to ensure it works as intended
+- [x] Deploy everything up to this point to production webserver software (Apache) running on Raspberry Pi to ensure it works as intended
 
 
 #### Mon Apr 5, 2021
 - [x] Find js keyboard to use for input
 - [x] Added js keyboard
-- [] Continue testing and troubleshooting production level deployment
+- [x] Continue testing and troubleshooting production level deployment
 - ~~[] Design and/or print case for wall mountable~~
-- [] Create speech to text module for easier inputting of data
+- [x] Create speech to text module for easier inputting of data
 - [x] TSS to read out tasks when they come due.
-- [] Validate speech to text for accuracy. I’ll have everyone in my household try it
+- [x] Validate speech to text for accuracy. I’ll have everyone in my household try it
 - [x] Redo dateTime fields as seperate date and time for tasks and supplies
-- [] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
-- [] Final testing and troubleshooting of full deployment
+- [x] Build out secondary device (it will just be web-based client, so it just needs to be built and configured)
+- [x] Final testing and troubleshooting of full deployment
