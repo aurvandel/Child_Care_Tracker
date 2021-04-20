@@ -165,6 +165,15 @@ class Contact(models.Model):
     phone = PhoneField(blank=False)
     provider = models.CharField(max_length=30, choices=CATEGORIES, default='T-Mobile')
 
+    def getEmail(self):
+        phone = str(self.phone)
+        badChars = ["(", ")", " ", "-"]
+        delete_dict = {sp_character: '' for sp_character in string.punctuation}
+        delete_dict[' '] = ''
+        table = str.maketrans(delete_dict)
+        phone = phone.translate(table) 
+        return '%s%s' % (str(phone), self.provider)
+        
 
     def get_absolute_url(self):
         """
@@ -175,14 +184,7 @@ class Contact(models.Model):
     def __str__(self):
         return '%s %s' % (self.name, self.phone)
 
-    def getEmail(self):
-        phone = str(self.phone)
-        badChars = ["(", ")", " ", "-"]
-        delete_dict = {sp_character: '' for sp_character in string.punctuation}
-        delete_dict[' '] = ''
-        table = str.maketrans(delete_dict)
-        phone = phone.translate(table) 
-        return '%s%s' % (str(phone), self.provider)
+
 
     class Meta:
         # order contacts by name

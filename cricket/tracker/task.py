@@ -26,10 +26,7 @@ def sayMessage(msg):
         os.remove("task.mp3")
 
 
-@background(schedule=0)
-def notify_users():
-    #print("task ran at ", timezone.make_naive(timezone.now()))
-
+def getMsgs():
     # get tasks that are due soon and put in list
     msgs = []
     now = (timezone.now())
@@ -42,22 +39,30 @@ def notify_users():
                 print(task.getMessage)
                 msgs.append(task.getMessage())
                 sayMessage(task.getMessage())
+    
+    return msgs
 
 
-    # get users addresses
-    fromEmail = 'parkergw@gmail.com'
-
-    user = Contact.objects.get(pk=2)
-
+def getEmailAddresses():
     addresses = []
     users = Contact.objects.all()
     if users.exists():
         for user in users:
             addresses.append(user.getEmail())
+    return addresses
+
+
+@background(schedule=0)
+def notify_users():
+    msgs = getMsgs()
+
+    # get users addresses
+    fromEmail = 'parkergw@gmail.com'
+
+    addresses = getEmailAddresses()
 
     # send messages
     for msg in msgs:
-
         send_mail(
             '',
             msg,
@@ -65,5 +70,4 @@ def notify_users():
             addresses,
             fail_silently=False,
         )
-        
         
