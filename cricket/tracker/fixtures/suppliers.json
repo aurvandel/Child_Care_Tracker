@@ -1,0 +1,20 @@
+[
+    {
+        "model": "tracker.supplier",
+        "pk": 1,
+        "fields": {
+            "name": "IHC",
+            "phone": "4356735972",
+            "afterHoursPhone": "4358469697"
+      }
+    },
+    {
+        "model": "tracker.supplier",
+        "pk": 2,
+        "fields": {
+            "name": "Alpine",
+            "phone": "4359741388",
+            "afterHoursPhone": "4352687469"
+        }
+      }
+  ]

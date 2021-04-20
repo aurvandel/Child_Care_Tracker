@@ -62,10 +62,17 @@ class Todo(models.Model):
         # order tasks by time
         ordering = ['todoTime']
 
+class SupplierManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
+
 class Supplier(models.Model):
     name = models.CharField(max_length=35)
     phone = PhoneField(blank=True, help_text='Company phone number')
     afterHoursPhone = PhoneField(blank=True, help_text='On call number')
+    
+    objects = SupplierManager()
 
     def get_absolute_url(self):
         """
@@ -79,6 +86,8 @@ class Supplier(models.Model):
     class Meta:
         # order suppliers by name
         ordering = ['name']
+        unique_together = [['name']]
+
 
 class Supply(models.Model):
     CATEGORIES = (

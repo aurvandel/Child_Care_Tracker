@@ -1,0 +1,253 @@
+- fields:
+    amount: 86
+    category: FEED
+    deliveryFrequency: 65
+    description: feed bags
+    lastDelivery: 2021-03-11 15:32:41.492197
+    nextDelivery: 2021-05-15 15:32:41.492197
+    orderNumber: 38222
+    supplier_id: 1
+  model: tracker.supply
+  pk: 1
+- fields:
+    amount: 80
+    category: MEDS
+    deliveryFrequency: 90
+    description: sildenafil
+    lastDelivery: 2021-03-17 15:32:41.492197
+    nextDelivery: 2021-06-15 15:32:41.492197
+    orderNumber: 84981
+    supplier_id: 1
+  model: tracker.supply
+  pk: 2
+- fields:
+    amount: 143
+    category: WOUND
+    deliveryFrequency: 55
+    description: gauze
+    lastDelivery: 2021-03-28 15:32:41.492197
+    nextDelivery: 2021-05-22 15:32:41.492197
+    orderNumber: 39947
+    supplier_id: 1
+  model: tracker.supply
+  pk: 3
+- fields:
+    amount: 16
+    category: RESP
+    deliveryFrequency: 90
+    description: Circuts
+    lastDelivery: 2021-03-09 15:32:41.492197
+    nextDelivery: 2021-06-07 15:32:41.492197
+    orderNumber: 4292
+    supplier_id: 2
+  model: tracker.supply
+  pk: 4
+- fields:
+    amount: 168
+    category: FEED
+    deliveryFrequency: 35
+    description: button
+    lastDelivery: 2021-02-21 15:32:41.492197
+    nextDelivery: 2021-03-28 15:32:41.492197
+    orderNumber: 26822
+    supplier_id: 1
+  model: tracker.supply
+  pk: 5
+- fields:
+    amount: 112
+    category: MEDS
+    deliveryFrequency: 69
+    description: sildenafil
+    lastDelivery: 2021-02-28 15:32:41.492197
+    nextDelivery: 2021-05-08 15:32:41.492197
+    orderNumber: 73918
+    supplier_id: 1
+  model: tracker.supply
+  pk: 6
+- fields:
+    amount: 193
+    category: WOUND
+    deliveryFrequency: 58
+    description: gauze
+    lastDelivery: 2021-02-22 15:32:41.492197
+    nextDelivery: 2021-04-21 15:32:41.492197
+    orderNumber: 35615
+    supplier_id: 2
+  model: tracker.supply
+  pk: 7
+- fields:
+    amount: 35
+    category: RESP
+    deliveryFrequency: 80
+    description: Circuts
+    lastDelivery: 2021-03-30 15:32:41.492197
+    nextDelivery: 2021-06-18 15:32:41.492197
+    orderNumber: 97168
+    supplier_id: 1
+  model: tracker.supply
+  pk: 8
+- fields:
+    amount: 173
+    category: FEED
+    deliveryFrequency: 39
+    description: formula
+    lastDelivery: 2021-03-04 15:32:41.492197
+    nextDelivery: 2021-04-12 15:32:41.492197
+    orderNumber: 49443
+    supplier_id: 2
+  model: tracker.supply
+  pk: 9
+- fields:
+    amount: 19
+    category: MEDS
+    deliveryFrequency: 58
+    description: sildenafil
+    lastDelivery: 2021-03-30 15:32:41.492197
+    nextDelivery: 2021-05-27 15:32:41.492197
+    orderNumber: 43423
+    supplier_id: 2
+  model: tracker.supply
+  pk: 10
+- fields:
+    amount: 38
+    category: WOUND
+    deliveryFrequency: 40
+    description: gauze
+    lastDelivery: 2021-03-31 15:32:41.492197
+    nextDelivery: 2021-05-10 15:32:41.492197
+    orderNumber: 10234
+    supplier_id: 2
+  model: tracker.supply
+  pk: 11
+- fields:
+    amount: 39
+    category: RESP
+    deliveryFrequency: 33
+    description: Circuts
+    lastDelivery: 2021-02-26 15:32:41.492197
+    nextDelivery: 2021-03-31 15:32:41.492197
+    orderNumber: 72532
+    supplier_id: 2
+  model: tracker.supply
+  pk: 12
+- fields:
+    amount: 45
+    category: FEED
+    deliveryFrequency: 40
+    description: feed bags
+    lastDelivery: 2021-04-07 15:32:41.492197
+    nextDelivery: 2021-05-17 15:32:41.492197
+    orderNumber: 76256
+    supplier_id: 1
+  model: tracker.supply
+  pk: 13
+- fields:
+    amount: 17
+    category: MEDS
+    deliveryFrequency: 85
+    description: sildenafil
+    lastDelivery: 2021-02-24 15:32:41.492197
+    nextDelivery: 2021-05-20 15:32:41.492197
+    orderNumber: 41241
+    supplier_id: 1
+  model: tracker.supply
+  pk: 14
+- fields:
+    amount: 45
+    category: WOUND
+    deliveryFrequency: 59
+    description: gauze
+    lastDelivery: 2021-03-07 15:32:41.492197
+    nextDelivery: 2021-05-05 15:32:41.492197
+    orderNumber: 61575
+    supplier_id: 2
+  model: tracker.supply
+  pk: 15
+- fields:
+    amount: 56
+    category: RESP
+    deliveryFrequency: 61
+    description: Circuts
+    lastDelivery: 2021-04-01 15:32:41.492197
+    nextDelivery: 2021-06-01 15:32:41.492197
+    orderNumber: 13872
+    supplier_id: 1
+  model: tracker.supply
+  pk: 16
+- fields:
+    amount: 193
+    category: FEED
+    deliveryFrequency: 36
+    description: button
+    lastDelivery: 2021-04-14 15:32:41.492197
+    nextDelivery: 2021-05-20 15:32:41.492197
+    orderNumber: 43953
+    supplier_id: 1
+  model: tracker.supply
+  pk: 17
+- fields:
+    amount: 56
+    category: MEDS
+    deliveryFrequency: 37
+    description: sildenafil
+    lastDelivery: 2021-02-25 15:32:41.492197
+    nextDelivery: 2021-04-03 15:32:41.492197
+    orderNumber: 45330
+    supplier_id: 1
+  model: tracker.supply
+  pk: 18
+- fields:
+    amount: 178
+    category: WOUND
+    deliveryFrequency: 78
+    description: gauze
+    lastDelivery: 2021-03-23 15:32:41.492197
+    nextDelivery: 2021-06-09 15:32:41.492197
+    orderNumber: 99377
+    supplier_id: 2
+  model: tracker.supply
+  pk: 19
+- fields:
+    amount: 100
+    category: RESP
+    deliveryFrequency: 65
+    description: Circuts
+    lastDelivery: 2021-03-04 15:32:41.492197
+    nextDelivery: 2021-05-08 15:32:41.492197
+    orderNumber: 32849
+    supplier_id: 1
+  model: tracker.supply
+  pk: 20
+- fields:
+    amount: 119
+    category: FEED
+    deliveryFrequency: 66
+    description: formula
+    lastDelivery: 2021-03-02 15:32:41.492197
+    nextDelivery: 2021-05-07 15:32:41.492197
+    orderNumber: 64672
+    supplier_id: 2
+  model: tracker.supply
+  pk: 21
+- fields:
+    amount: 179
+    category: MEDS
+    deliveryFrequency: 78
+    description: sildenafil
+    lastDelivery: 2021-04-17 15:32:41.492197
+    nextDelivery: 2021-07-04 15:32:41.492197
+    orderNumber: 22608
+    supplier_id: 1
+  model: tracker.supply
+  pk: 22
+- fields:
+    amount: 41
+    category: WOUND
+    deliveryFrequency: 68
+    description: gauze
+    lastDelivery: 2021-03-19 15:32:41.492197
+    nextDelivery: 2021-05-26 15:32:41.492197
+    orderNumber: 96578
+    supplier_id: 1
+  model: tracker.supply
+  pk: 23
