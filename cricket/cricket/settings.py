@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -149,3 +149,9 @@ CRISPY_CLASS_CONVERTERS = {
     'textinput': 'textinput keyboard ui-keyboard-input ui-widget-content ui-corner-all',
     'datetimeinput': 'datetimeinput keyboard ui-keyboard-input ui-widget-content ui-corner-all'
 }
+
+SECURE_HSTS_SECONDS = 0
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
