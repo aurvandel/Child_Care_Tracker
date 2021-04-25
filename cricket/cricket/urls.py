@@ -19,11 +19,12 @@ from tracker import views
 from django.conf.urls import url
 from tracker.task import notify_users
 from background_task.models import Task
-
+from django.contrib import admin
 
 urlpatterns = [
     path('', views.index.as_view(), name='index'),
     url(r'^tracker/', include('tracker.urls')),
+    path('admin/', admin.site.urls),
 
 
 ]

@@ -31,7 +31,7 @@ class Todo(models.Model):
 
     def getTime(self):
         #return self.todoTime.strftime('%I:%M %p')
-        return self.todoTime
+        return self.todoTime.strftime('%-I:%M %p')
 
     def getMessage(self):
         return '%s is due at %s' % (self.task, self.getTime())
@@ -60,7 +60,7 @@ class Todo(models.Model):
 
     class Meta:
         # order tasks by time
-        ordering = ['todoTime']
+        ordering = ['-todoDate', '-todoTime']
 
 class SupplierManager(models.Manager):
     def get_by_natural_key(self, name):
@@ -102,7 +102,7 @@ class Supply(models.Model):
     category = models.CharField(max_length=30, choices=CATEGORIES)
     amount = models.PositiveIntegerField(blank=True)
     supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE, blank=True)
-    lastDelivery = models.DateField(blank=True)
+    lastDelivery = models.DateField(blank=False)
     nextDelivery = models.DateField(blank=True)
     deliveryFrequency = models.PositiveIntegerField(blank=False)
 
@@ -128,7 +128,7 @@ class Supply(models.Model):
 
     class Meta:
         # order supplies by description
-        ordering = ['description']
+        ordering = ['-lastDelivery']
 
 class Appointment(models.Model):
     apptTime = models.TimeField()
@@ -159,7 +159,7 @@ class Appointment(models.Model):
 
     class Meta:
         # order appt by dateTime
-        ordering = ['apptDate', 'apptTime']
+        ordering = ['-apptDate', '-apptTime']
 
 class Contact(models.Model):
     
