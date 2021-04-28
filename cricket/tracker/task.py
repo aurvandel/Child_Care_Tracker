@@ -45,7 +45,7 @@ def getMsgs():
     withinTime = now + timezone.timedelta(minutes=1)
     print(now, withinTime)
     tasks = Todo.objects.filter(todoTime__range=(now, withinTime))
-    tasksToday = Todo.objects.filter(todoDate__date=datetime.date.today())
+    tasksToday = Todo.objects.filter(todoDate=datetime.date.today())
     # change message to get rid of seconds 
     if tasks.exists() and tasksToday.exists():
         for task in tasks:
@@ -53,6 +53,7 @@ def getMsgs():
                 print(task.getMessage)
                 msgs.append(task.getMessage())
                 sayMessage(task.getMessage())
+                task.updateMessageSent()
     
     return msgs
 
@@ -80,8 +81,8 @@ def notify_users():
     # send messages
     for msg in msgs:
         send_mail(
-            '',
             msg,
+            ' ',
             fromEmail,
             addresses,
             fail_silently=False,
