@@ -96,17 +96,19 @@ $ python manage.py runserver
 ```
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Track daily recurring tasks
+* Easily track what supplies need to be ordered
+* Calendar to track future appointments
+* Notifications are sent to your cell phone and spoken by the device
 
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* Refactor views to make things asynchronous
+* Ability to turn notifications on/off
+* 
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Project is: _in progress_ 
+_finished_, _no longer continue_ and why?
 
 ## Project Milestones
 As this project was started as my senior captsone project I've listed my timeline
@@ -143,7 +145,7 @@ As this project was started as my senior captsone project I've listed my timelin
 - [x] Find js keyboard to use for input
 - [x] Added js keyboard
 - [x] Continue testing and troubleshooting production level deployment
-- ~~[] Design and/or print case for wall mountable~~
+- ~~Design and/or print case for wall mountable~~
 - [x] Create speech to text module for easier inputting of data
 - [x] TSS to read out tasks when they come due.
 - [x] Validate speech to text for accuracy. I’ll have everyone in my household try it
