@@ -104,11 +104,14 @@ $ python manage.py runserver
 To-do list:
 * Refactor views to make things asynchronous
 * Ability to turn notifications on/off
-* 
+* Camera to view child if your in a seperate room
+* 2-way audio communication
+* Speech to text for easier input
+* Better javascript keyboard
 
 ## Status
 Project is: _in progress_ 
-_finished_, _no longer continue_ and why?
+[comment]: <> (_finished_, _no longer continue_ and why?)
 
 ## Project Milestones
 As this project was started as my senior captsone project I've listed my timeline
