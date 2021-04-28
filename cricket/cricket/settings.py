@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -91,6 +91,27 @@ DATABASES = {
     }
 }
 
+# Log file setting
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'log/bg_task.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -122,7 +143,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = True 
 
 TIME_INPUT_FORMATS = ('%I:%M %p',)
 TIME_OUTPUT_FORMATS = ('%I:%M %p',)
@@ -131,16 +152,21 @@ TIME_OUTPUT_FORMATS = ('%I:%M %p',)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+#STATIC_ROOT = '/var/www/html/cricket.local/cricket/static_root'
 # Email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = str(os.getenv('EMAIL'))
-EMAIL_HOST_PASSWORD = str(os.getenv('GMAILPASS'))
+#EMAIL_HOST_USER = str(os.getenv('EMAIL'))
+#EMAIL_HOST_PASSWORD = str(os.getenv('GMAILPASS'))
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = str(os.getenv('SENDGRID_API_KEY'))
+
 
 # Crispy stuff
 CRISPY_CLASS_CONVERTERS = {
@@ -149,3 +175,9 @@ CRISPY_CLASS_CONVERTERS = {
     'textinput': 'textinput keyboard ui-keyboard-input ui-widget-content ui-corner-all',
     'datetimeinput': 'datetimeinput keyboard ui-keyboard-input ui-widget-content ui-corner-all'
 }
+
+SECURE_HSTS_SECONDS = 0
+SECURE_SSL_REDIRECT = False
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+

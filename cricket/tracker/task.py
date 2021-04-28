@@ -4,46 +4,62 @@ from tracker.models import Contact, Todo
 from django.utils import timezone
 import datetime
 from google.cloud import texttospeech
-from playsound import playsound
 import os
+import time
+import pygame
+import logging
+
+# TODO: implement logging
 
 # timezone.make_naive to get time in timezone
 
 def sayMessage(msg):
+    print("speeking", msg)
     # Setup for tts
     tts_client = texttospeech.TextToSpeechClient()
     params = texttospeech.VoiceSelectionParams(language_code='en-US', ssml_gender=texttospeech.SsmlVoiceGender.FEMALE)
-    audio = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3)
+    audio = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.LINEAR16)
     # Say the whats coming due
     si = texttospeech.SynthesisInput(text=msg)
     response = tts_client.synthesize_speech(input=si, voice=params, audio_config=audio)
-    f = open('task.mp3', 'wb')
+    f = open('task.wav', 'wb')
     f.write(response.audio_content)
     f.close()
-    playsound('task.mp3')
+    
+    pygame.mixer.init()
+    pygame.mixer.music.load(open('task.wav', "rb"))
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        time.sleep(1)
 
-    if os.path.exists("task.mp3"):
-        os.remove("task.mp3")
+    if os.path.exists("task.wav"):
+        os.remove("task.wav")
 
 
 def getMsgs():
     # get tasks that are due soon and put in list
+    print("getting msgs")
     msgs = []
-    now = (timezone.now())
+    #now = (timezone.now())
+    now = datetime.datetime.now()
     withinTime = now + timezone.timedelta(minutes=1)
+    print(now, withinTime)
     tasks = Todo.objects.filter(todoTime__range=(now, withinTime))
-    
-    if tasks.exists():
+    tasksToday = Todo.objects.filter(todoDate=datetime.date.today())
+    # change message to get rid of seconds 
+    if tasks.exists() and tasksToday.exists():
         for task in tasks:
             if not task.messageSent:
                 print(task.getMessage)
                 msgs.append(task.getMessage())
                 sayMessage(task.getMessage())
+                task.updateMessageSent()
     
     return msgs
 
 
 def getEmailAddresses():
+    print("getting contacts")
     addresses = []
     users = Contact.objects.all()
     if users.exists():
@@ -54,20 +70,22 @@ def getEmailAddresses():
 
 @background(schedule=0)
 def notify_users():
+    print("starting msg send")
     msgs = getMsgs()
-
+    print(msgs)
     # get users addresses
     fromEmail = 'parkergw@gmail.com'
 
     addresses = getEmailAddresses()
-
+    print(addresses)
     # send messages
     for msg in msgs:
         send_mail(
-            '',
             msg,
+            ' ',
             fromEmail,
             addresses,
             fail_silently=False,
         )
+    print("Done")
         

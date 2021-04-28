@@ -30,8 +30,8 @@
                     </div>
                     <form action="" method="post"> {% csrf_token %}
                         <a href="{% url 'calendar' %}"button type="button" class="btn btn-primary">Close</a>
-                        <a href="{% url 'calendar-update' object.pk %}" class="bigButtons btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a href="{% url 'calendar-delete' object.pk %}" class="bigButtons btn btn-danger btn-sm" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        <a href="{% url 'calendar-update' object.pk %}" class="bigButtons btn btn-primary btn-md cald" role="button" aria-pressed="true"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="{% url 'calendar-delete' object.pk %}" class="bigButtons btn btn-danger btn-md cald" role="button" aria-pressed="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </form>
                 </div>
             </div>

@@ -1,0 +1,231 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+body {
+  background-color: #121212;
+}
+
+#clock {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  color: whitesmoke;
+  font-size: 1.5em;
+  text-align: right;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#date {
+  font-family: 'Orbitron', sans-serif;
+  color: whitesmoke;
+  font-size: 1.5em;
+  text-align: right;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.deleteModalButtons {
+  float: right;
+}
+
+.addItem {
+  margin-left: 10px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.navbar {
+  width: 400px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  overflow: hidden;
+  z-index: 1;
+}
+
+h1.title {
+  text-align: center;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  /* color: #f2f2f2; */
+  /* text-align: center; */
+  /* padding: 14px 16px; */
+  /* text-decoration: none; */
+}
+
+/* Main content */
+.main {
+  margin-top: 80px; /* Add a top margin to avoid content overlay */
+  z-index: 0;
+}
+
+.bigButtons {
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.col-10 {
+  width: 800px;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+  padding: .25rem .4rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+
+/* CSS for calendar */
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+  #height: 100%;
+  #position: absolute;
+  #top: 0;
+  #bottom: 0;
+  #left: 0;
+  
+}
+
+.calendar tr, .calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* change size of calander here */
+.calendar td {
+  width: 200px;
+  height: 100px;
+  padding: 20px 0px 0px 5px;
+}
+
+.cald {
+  padding-bottom: 6px;
+  margin-bottom: 0px;
+}
+
+.calendar li {
+  list-style-type: none;
+  font-size: 16px;
+}
+
+.calendar.btn-group-xs > .btn, .btn-xs {
+  padding: .2rem .3rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+.calendar ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+.calendar a {
+  color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/* .btn {
+  outline: none;
+  color: white;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+} */
+
+.clearfix {
+  margin: 0px 15px 5px 15px;
+}
+
+.mid-left { 
+  top: 50%; 
+  left: 0; 
+  transform: translateY(-50%); 
+
+  height:90px;
+  width:45px;
+  border-radius: 0 90px 90px 0;
+  line-height: 90px;
+  
+} 
+
+.mid-right { 
+  top: 50%; 
+  right: 0; 
+  transform: translateY(-50%); 
+
+  height:90px;
+  width:45px;
+  border-radius: 90px 0 0 90px;
+  line-height: 90px;
+} 
+
+.fa-chevron-left {
+  height: 50px;
+  font-size: 36px;
+  /* transform: translateY(-55deg); */
+  vertical-align: left;
+}
+
+.fa-chevron-right {
+  font-size: 36px;
+}
+
+.w-1210 {
+  width: 1190px;
+}
+
+.ui-keyboard {
+  font-size: 10px;
+  z-index: 1601;
+  position: absolute;
+  background: none;
+  border: none;
+  left: -25%;
+  width: unset;
+
+}
+
+.wrap {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+}
+
+:not(.ui-keyboard-preview-wrapper) > .keyboard {
+  display: inline;
+  width: initial;
+}

@@ -1,11 +1,11 @@
 from django.urls import path
 from tracker.views import *
-from django.contrib import admin
+#from django.contrib import admin
 from django.conf.urls import url, include
 
 urlpatterns = [
     path('', index.as_view(), name='index'),
-    path('admin/', admin.site.urls),   
+    #path('admin/', admin.site.urls),   
     path('task_complete/<str:pk>/', todoUpdateModalView, name="task_complete"),
     path('add/', TodoCreateView.as_view(), name='todo-add'),
     path('todo/<int:pk>/', TodoUpdateView.as_view(), name='todo-update'),
