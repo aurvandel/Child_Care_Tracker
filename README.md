@@ -16,7 +16,10 @@ Web app designed for a raspberry pi based tablet for aiding in the care of a chi
 Taking care of a special needs is hard enough with without having to worry about remembering to everything that needs to be done. Cricket will keep track of daily tasks, appointments and supplies so you can focus on more important things.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![image](https://user-images.githubusercontent.com/6406075/117090686-3e3cf480-ad16-11eb-8086-60bbb105e762.png)
+![image](https://user-images.githubusercontent.com/6406075/117090750-6debfc80-ad16-11eb-9afb-14911842e0a6.png)
+![image](https://user-images.githubusercontent.com/6406075/117090829-a7246c80-ad16-11eb-9460-c0b2bb7998e4.png)
+
 
 ## Technologies
 Project is created with:
